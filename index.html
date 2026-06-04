@@ -20,7 +20,10 @@
 <meta property="og:image" content="https://pavlenkotm.github.io/more-v-podushke/assets/hero-main.jpg">
 <meta property="og:locale" content="ru_RU">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Море в подушке - подушки с зостерой · Бердянск">
+<meta name="twitter:description" content="Подушки 45×45 из хлопка с наполнителем из морской водоросли зостеры. Ручная работа, Бердянск.">
 <meta name="twitter:image" content="https://pavlenkotm.github.io/more-v-podushke/assets/hero-main.jpg">
+<link rel="canonical" href="https://pavlenkotm.github.io/more-v-podushke/">
 <link rel="preload" as="image" href="assets/hero-main.jpg" fetchpriority="high">
 <!-- При переходе на свой домен заменить og:url / og:image / twitter:image на новый адрес -->
 <meta name="author" content="pavlenkotm">
@@ -81,8 +84,8 @@
   .eyebrow::before{content:"";width:34px;height:1px;background:var(--sea-mid);opacity:.6}
   .eyebrow.light{color:var(--foam)}
   .eyebrow.light::before{background:var(--sand)}
-  .eyebrow.light.hero-eyebrow{color:#a3e635;font-size:14px;letter-spacing:.26em;text-shadow:0 1px 8px rgba(0,0,0,.35)}
-  .eyebrow.light.hero-eyebrow::before,.eyebrow.light.hero-eyebrow::after{background:#a3e635;opacity:.9}
+  .eyebrow.light.hero-eyebrow{color:var(--sand);font-size:14px;letter-spacing:.26em;text-shadow:0 1px 10px rgba(0,0,0,.5),0 1px 2px rgba(0,0,0,.4)}
+  .eyebrow.light.hero-eyebrow::before,.eyebrow.light.hero-eyebrow::after{background:var(--sand);opacity:.9}
   .eyebrow.light.hero-eyebrow::after{content:"";width:34px;height:1px}
 
   .btn{display:inline-flex;align-items:center;gap:12px;cursor:pointer;border:none;
@@ -144,13 +147,19 @@
   .burger.open span:nth-child(1){transform:translateY(6.6px) rotate(45deg)}
   .burger.open span:nth-child(2){opacity:0}
   .burger.open span:nth-child(3){transform:translateY(-6.6px) rotate(-45deg)}
+  .nav-close{display:none}
+  .nav-foot{display:none}
 
   @media(max-width:1100px){
-    .nav-links{position:fixed;inset:0 0 0 auto;width:min(82vw,360px);background:var(--cream);
-      flex-direction:column;justify-content:center;gap:30px;padding:60px;
-      transform:translateX(100%);transition:transform .55s var(--ease);box-shadow:var(--shadow-lg)}
-    .nav-links.open{transform:translateX(0)}
-    .nav-links a{font-size:21px;font-family:var(--serif);color:var(--ink)!important}
+    .nav-links{position:fixed;top:0;right:0;left:auto;height:100vh;height:100svh;width:min(80vw,300px);background:var(--cream);
+      flex-direction:column;justify-content:flex-start;align-items:stretch;gap:0;padding:74px 28px 28px;overflow-y:auto;
+      visibility:hidden;transform:translateX(100%);transition:transform .55s var(--ease),visibility .55s var(--ease);box-shadow:var(--shadow-lg);z-index:1001}
+    .nav-links.open{transform:translateX(0);visibility:visible}
+    .nav-links>a{font-size:19px;font-family:var(--serif);color:var(--ink)!important;min-height:52px;display:flex;align-items:center;border-bottom:1px solid var(--line)}
+    .nav-close{display:flex;position:absolute;top:18px;right:20px;width:44px;height:44px;border:1px solid var(--line);border-radius:50%;background:none;color:var(--ink);cursor:pointer;align-items:center;justify-content:center}
+    .nav-foot{display:flex;flex-direction:column;gap:2px;margin-top:auto;padding-top:24px}
+    .nav-foot-label{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:8px}
+    .nav-foot a{font-family:var(--sans);font-size:16px;color:var(--sea)!important;min-height:40px;display:flex;align-items:center}
     .burger{display:flex}
   }
 
@@ -166,8 +175,7 @@
   .shero-content{position:relative;z-index:3;text-align:center;color:#fff;max-width:880px;padding:0 28px;will-change:opacity,transform}
   .shero-content h1{font-size:clamp(48px,9.5vw,140px);font-weight:500;margin:22px 0 0;color:#fff;text-shadow:0 2px 22px rgba(0,0,0,.5),0 1px 3px rgba(0,0,0,.35)}
   .shero-content h1 .ital{font-style:italic;color:var(--sand)}
-  .shero-lede{max-width:560px;margin:26px auto 38px;font-size:clamp(16px,2vw,19px);color:rgba(255,255,255,.95);text-shadow:0 1px 14px rgba(0,0,0,.55),0 1px 2px rgba(0,0,0,.4)}
-  .shero-actions{display:flex;gap:16px;flex-wrap:wrap;justify-content:center}
+  .shero-actions{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin-top:38px}
   .scroll-cue{position:absolute;left:50%;bottom:38px;transform:translateX(-50%);z-index:4;
     display:flex;flex-direction:column;align-items:center;gap:12px;color:rgba(255,255,255,.85);font-size:11px;letter-spacing:.28em;text-transform:uppercase}
   .scroll-cue .mouse{width:24px;height:38px;border:1.5px solid rgba(255,255,255,.8);border-radius:14px;position:relative}
@@ -243,7 +251,7 @@
   .card:hover .more svg{transform:translateX(4px)}
 
   /* sea gallery */
-  .gal-head{margin:74px 0 26px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:baseline;text-align:center}
+  .gal-head{margin:74px 0 26px;display:grid;grid-template-columns:1fr;gap:64px;align-items:baseline;text-align:center}
   @media(max-width:860px){.gal-head{grid-template-columns:1fr;text-align:center}}
   .gal-head h3{font-size:clamp(24px,3.5vw,38px)}
   .gal-head span{color:var(--ink-soft);font-size:14.5px}
@@ -419,7 +427,7 @@
   .totop svg{width:18px;height:18px}
 
   /* mobile floating action bar */
-  .mobile-cta{position:fixed;left:14px;right:14px;bottom:14px;z-index:950;display:none;gap:10px;
+  .mobile-cta{position:fixed;left:14px;right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:950;display:none;gap:10px;
     opacity:0;transform:translateY(130%);transition:opacity .5s var(--ease),transform .5s var(--ease)}
   .mobile-cta.show{opacity:1;transform:none}
   .mobile-cta .btn{flex:1;justify-content:center;padding:15px 20px;box-shadow:0 12px 30px -8px rgba(12,59,70,.55)}
@@ -427,13 +435,13 @@
   /* mobile: designed, not shrunk */
   @media(max-width:600px){
     .mobile-cta{display:flex}
+    footer{padding-bottom:108px}
     .totop{display:none}
     .nav-cta{display:none}
     .shero{height:138vh}
     .shero-scrim{background:linear-gradient(180deg,rgba(8,40,48,.45) 0%,rgba(8,40,48,.16) 34%,rgba(8,40,48,.34) 68%,rgba(8,40,48,.5) 100%)}
     .shero-content{padding:0 22px}
     .shero-content h1{font-size:clamp(40px,12.5vw,60px)}
-    .shero-lede{margin:20px auto 30px}
     .shero-actions{flex-direction:column;align-items:stretch;gap:12px}
     .shero-actions .btn{width:100%;justify-content:center}
     .hero-eyebrow{font-size:11.5px;letter-spacing:.16em}
@@ -460,12 +468,37 @@
   .zfact:hover::after,.member:hover::after{opacity:1;transform:scale(1)}
   .btn:active{transform:scale(.97)}
 
+  /* видимый фокус для клавиатуры */
+  :focus-visible{outline:2px solid var(--sea);outline-offset:3px}
+  .shero-actions .btn:focus-visible,.delivery a:focus-visible,.delivery .step:focus-visible,footer a:focus-visible,.mobile-cta .btn:focus-visible{outline-color:var(--sand)}
+  /* marquee останавливается при наведении */
+  .band:hover .band-track{animation-play-state:paused}
+  /* кнопка заказа выбранного варианта */
+  .picker-cta{margin-top:24px}
+  .picker-hint{margin-top:10px;font-size:12.5px;color:var(--ink-soft);line-height:1.45;max-width:340px}
+  /* затемнение под мобильным меню */
+  .nav-backdrop{position:fixed;inset:0;z-index:999;background:rgba(8,40,48,.5);opacity:0;visibility:hidden;
+    transition:opacity .45s var(--ease),visibility .45s var(--ease)}
+  .nav-backdrop.open{opacity:1;visibility:visible}
+  @media(min-width:1101px){.nav-backdrop{display:none}}
+  /* мобильная производительность: без дорогого фикс-фона и зернового оверлея */
+  @media(max-width:900px){
+    body{background-attachment:scroll}
+    body::before{display:none}
+  }
+
   @media(prefers-reduced-motion:reduce){
     *{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
     .ro{opacity:1;transform:none;filter:none}
     .shero-media{clip-path:inset(0);transform:none}
   }
 </style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"LocalBusiness","name":"Море в подушке","description":"Натуральные подушки 45×45 из хлопка с наполнителем из морской водоросли зостеры. Ручная работа.","image":"https://pavlenkotm.github.io/more-v-podushke/assets/hero-main.jpg","url":"https://pavlenkotm.github.io/more-v-podushke/","telephone":"+79900459624","address":{"@type":"PostalAddress","addressLocality":"Бердянск","addressCountry":"RU"},"areaServed":"RU"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Product","name":"Подушка с зостерой 45×45","description":"Подушка 45×45 из хлопка с наполнителем из морской водоросли зостеры. Морская, элегантная и авторская линейки.","image":"https://pavlenkotm.github.io/more-v-podushke/assets/hero-main.jpg","brand":{"@type":"Brand","name":"Море в подушке"},"offers":{"@type":"Offer","price":"1500","priceCurrency":"RUB","availability":"https://schema.org/InStock"}}
+</script>
 </head>
 <body class="is-loading">
 
@@ -487,17 +520,27 @@
       Море в подушке
     </a>
     <nav class="nav-links" id="navLinks" aria-label="Основная навигация">
+      <button class="nav-close" id="navClose" type="button" aria-label="Закрыть меню">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+      </button>
       <a href="#manifesto">Манифест</a>
       <a href="#pillows">Подушки</a>
       <a href="#materials">Материалы</a>
       <a href="#zostera">Зостера</a>
       <a href="#delivery">Доставка</a>
-      <a href="#team">Команда</a><a href="#contacts">Контакты</a>
+      <a href="#team">Команда</a>
+      <a href="#contacts">Контакты</a>
+      <div class="nav-foot">
+        <span class="nav-foot-label">Связаться</span>
+        <a href="https://t.me/+79900459624" target="_blank" rel="noopener">Telegram</a>
+        <a href="https://wa.me/79900459624" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
     </nav>
     <a href="#contacts" class="btn btn-primary nav-cta" data-cursor><span>Заказать</span></a>
-    <button class="burger" id="burger" aria-label="Меню" aria-expanded="false"><span></span><span></span><span></span></button>
+    <button class="burger" id="burger" aria-label="Меню" aria-controls="navLinks" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
 </header>
+<div class="nav-backdrop" id="navBackdrop"></div>
 
 <main id="top">
 
@@ -509,10 +552,9 @@
       <div class="shero-content" id="sheroContent">
         <span class="eyebrow light hero-eyebrow">Бердянск · ручная работа</span>
         <h1>Подушка с эффектом <span class="ital">моря</span></h1>
-        <p class="shero-lede">Подушки 45×45 из хлопка с наполнителем из морской водоросли зостеры.</p>
         <div class="shero-actions">
           <a href="#pillows" class="btn btn-light" data-cursor><span>Смотреть подушки</span>
-            <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
           <a href="#materials" class="btn btn-ghost-light" data-cursor>О наполнителе</a>
         </div>
@@ -547,8 +589,8 @@
           <div class="manifesto-photo"><img src="assets/manifest.jpg" alt="Льняная подушка на берегу моря среди трав" loading="lazy" decoding="async"></div>
           <div class="manifesto-text">
           <p>Дарим вам частичку моря - подушку с наполнителем из водоросли <strong>зостера</strong> Чёрного и Азовского морей. Она не гниёт, не боится влаги, гипоаллергенна и сама регулирует микроклимат: забирает лишнюю влагу, а в сухом воздухе отдаёт её.</p>
-          <p>В составе - йод, бром, железо, цинк, кобальт, аминокислоты и фукоидан. Морской микроклимат благотворно влияет на дыхание и нервную систему и дарит спокойный, безмятежный сон.</p>
-          <p>Если болит голова и ты чувствуешь стресс - <em>сними его морем в подушке</em>.</p>
+          <p>В составе - йод, бром, железо, цинк, кобальт, аминокислоты и фукоидан. Рядом с изголовьем - лёгкий морской аромат и атмосфера побережья, в которой приятно расслабиться и заснуть.</p>
+          <p>Хочется выдохнуть после долгого дня - <em>укройся морем в подушке</em>.</p>
           <p class="disclaimer">Информация ознакомительная. Подушка не является лекарственным средством.</p>
           </div>
         </div>
@@ -560,7 +602,7 @@
   <section class="sec-pad" id="pillows">
     <div class="wrap">
       <div class="sec-head">
-        <div class="ro"><span class="sec-no">02 - Подушки</span></div>
+        <div class="ro"><span class="sec-no">02 - Подушки</span><h2>Выберите свою подушку</h2></div>
       </div>
 
       <!-- Морская линейка -->
@@ -582,6 +624,10 @@
             <button class="thumb" aria-pressed="false" data-img="assets/shells.png" data-name="Ракушки" aria-label="Ракушки" data-cursor><img src="assets/shells.png" alt=""></button>
           </div>
           <p class="picker-foot">Каждый сюжет - на подушке 45×45 с наполнителем из зостеры.</p>
+          <a class="btn btn-primary picker-cta" id="seaOrder" href="https://t.me/+79900459624" target="_blank" rel="noopener" data-cursor><span>Заказать этот вариант</span>
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 5 3 12l5 2 2 5 3-3 4 3 4-14Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <p class="picker-hint">Откроется Telegram; текст заказа скопируется — вставьте его в чат.</p>
         </div>
       </div>
 
@@ -606,6 +652,10 @@
             <button class="swatch" style="background:#fbfbf9" data-img="assets/white.png" data-name="Белый" aria-pressed="false" aria-label="Белый" data-cursor></button>
           </div>
           <p class="picker-foot">Спокойная однотонная классика - шесть оттенков под любой интерьер.</p>
+          <a class="btn btn-primary picker-cta" id="elegOrder" href="https://t.me/+79900459624" target="_blank" rel="noopener" data-cursor><span>Заказать этот вариант</span>
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 5 3 12l5 2 2 5 3-3 4 3 4-14Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <p class="picker-hint">Откроется Telegram; текст заказа скопируется — вставьте его в чат.</p>
         </div>
       </div>
 
@@ -628,6 +678,10 @@
             <button class="thumb" aria-pressed="false" data-img="assets/author4.png" data-name="Серая стёжка" aria-label="Серая стёжка" data-cursor><img src="assets/author4.png" alt=""></button>
           </div>
           <p class="picker-foot">Готовые узоры или ваш собственный эскиз - на подушке 45×45 с зостерой.</p>
+          <a class="btn btn-primary picker-cta" id="authOrder" href="https://t.me/+79900459624" target="_blank" rel="noopener" data-cursor><span>Заказать этот вариант</span>
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 5 3 12l5 2 2 5 3-3 4 3 4-14Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <p class="picker-hint">Откроется Telegram; текст заказа скопируется — вставьте его в чат.</p>
         </div>
       </div>
     </div>
@@ -648,11 +702,11 @@
         <div class="ro d1">
           <div class="mat-features">
             <div class="feat">
-              <span class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3c4 4 6 7 6 11a6 6 0 1 1-12 0c0-4 2-7 6-11Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></span>
+              <span class="ic"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3c4 4 6 7 6 11a6 6 0 1 1-12 0c0-4 2-7 6-11Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></span>
               <div><h3>Наполнитель - зостера</h3><p>Сухая морская трава Азовского моря. Йод, бром, микроэлементы и фукоидан; отводит влагу и держит прохладу.</p></div>
             </div>
             <div class="feat">
-              <span class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12a8 8 0 0 1 16 0M4 12a8 8 0 0 0 16 0M12 4v16" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span>
+              <span class="ic"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12a8 8 0 0 1 16 0M4 12a8 8 0 0 0 16 0M12 4v16" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span>
               <div><h3>Верх - хлопок 100%</h3><p>Плотная дышащая ткань, приятная к коже и выдерживающая частые стирки.</p></div>
             </div>
           </div>
@@ -677,34 +731,34 @@
       <div class="zphoto ro"><div class="shot"><img src="assets/zostera.jpg" alt="Заросли морской водоросли зостеры в лучах солнца под водой" loading="lazy" decoding="async"></div></div>
       <div class="zfacts">
         <div class="zfact ro">
-          <span class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M3 8c2 0 2-2 4-2s2 2 4 2 2-2 4-2 2 2 4 2M3 14c2 0 2-2 4-2s2 2 4 2 2-2 4-2 2 2 4 2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span>
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 8c2 0 2-2 4-2s2 2 4 2 2-2 4-2 2 2 4 2M3 14c2 0 2-2 4-2s2 2 4 2 2-2 4-2 2 2 4 2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span>
           <h3>Йод и бром</h3>
           <p>Морской микроклимат прямо у изголовья - лёгкое дыхание моря рядом всю ночь.</p>
         </div>
         <div class="zfact ro d1">
-          <span class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3c4 4 6 7 6 11a6 6 0 1 1-12 0c0-4 2-7 6-11Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></span>
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3c4 4 6 7 6 11a6 6 0 1 1-12 0c0-4 2-7 6-11Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></span>
           <h3>Не боится влаги</h3>
           <p>Не подвержена гниению и не теряет свойств при намокании - служит долго.</p>
         </div>
         <div class="zfact ro d2">
-          <span class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M9 11.5l2 2 4-4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M9 11.5l2 2 4-4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
           <h3>Гипоаллергенно</h3>
-          <p>Высокое содержание солей кальция: не заводятся пылевой клещ и насекомые.</p>
+          <p>Сухая морская трава с высоким содержанием солей - некомфортная среда для пылевого клеща.</p>
         </div>
         <div class="zfact ro">
-          <span class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M4 8h11a3 3 0 1 0-3-3M4 12h15a3 3 0 1 1-3 3M4 16h9" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span>
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 8h11a3 3 0 1 0-3-3M4 12h15a3 3 0 1 1-3 3M4 16h9" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span>
           <h3>Регулирует влажность</h3>
           <p>Забирает лишнюю влагу из воздуха, а в сухом помещении отдаёт её обратно.</p>
         </div>
         <div class="zfact ro d1">
-          <span class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M5 19c7 0 14-5 14-14 0 0-12-1-14 8a6 6 0 0 0 0 6Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M5 19c2-4 5-6 9-7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span>
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 19c7 0 14-5 14-14 0 0-12-1-14 8a6 6 0 0 0 0 6Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M5 19c2-4 5-6 9-7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span>
           <h3>Микроэлементы</h3>
           <p>Йод, железо, цинк, кобальт, аминокислоты и полисахарид фукоидан.</p>
         </div>
         <div class="zfact ro d2">
-          <span class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M20 14a8 8 0 0 1-10-10 8 8 0 1 0 10 10Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></span>
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 14a8 8 0 0 1-10-10 8 8 0 1 0 10 10Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></span>
           <h3>Спокойный сон</h3>
-          <p>Мягкий йодистый аромат помогает расслабиться, снять стресс и легче засыпать.</p>
+          <p>Мягкий морской аромат настраивает на отдых - с ним приятно засыпать.</p>
         </div>
       </div>
       <p class="znote ro d1">Информация о свойствах зостеры носит ознакомительный характер и не заменяет консультацию врача.</p>
@@ -725,8 +779,8 @@
         <div class="step ro d2" data-cursor><div class="sn">03</div><h3>Отправка</h3><p>Аккуратно упаковываем и передаём перевозчику. Сообщаем трек для отслеживания.</p></div>
       </div>
       <div class="delivery-note ro d1">
-        <span class="chip"><svg viewBox="0 0 24 24" fill="none"><path d="M3 7h13v8H3zM16 10h3l2 3v2h-5" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="7" cy="17" r="2" stroke="currentColor" stroke-width="1.7"/><circle cx="17" cy="17" r="2" stroke="currentColor" stroke-width="1.7"/></svg>Доставка по России - от 1000 ₽</span>
-        <span class="chip"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"/><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>Расчёт индивидуально по тарифу перевозчика</span>
+        <span class="chip"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 7h13v8H3zM16 10h3l2 3v2h-5" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="7" cy="17" r="2" stroke="currentColor" stroke-width="1.7"/><circle cx="17" cy="17" r="2" stroke="currentColor" stroke-width="1.7"/></svg>Доставка по России - от 1000 ₽</span>
+        <span class="chip"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"/><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>Расчёт индивидуально по тарифу перевозчика</span>
       </div>
     </div>
   </section>
@@ -771,23 +825,23 @@
 
       <div class="contact-info ro" style="max-width:640px">
         <div class="line">
-          <span class="ic"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.7"/><path d="M5 20c0-3.3 3.1-6 7-6s7 2.7 7 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span>
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.7"/><path d="M5 20c0-3.3 3.1-6 7-6s7 2.7 7 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span>
           <div><div class="k">Контактное лицо</div><div class="v">Лариса</div></div>
         </div>
         <div class="line">
-          <span class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M5 4h3l2 5-2 1a11 11 0 0 0 5 5l1-2 5 2v3a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></span>
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4h3l2 5-2 1a11 11 0 0 0 5 5l1-2 5 2v3a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></span>
           <div><div class="k">Телефон</div><a class="v" href="tel:+79900459624">+7 990 045-96-24</a></div>
         </div>
         <div class="line">
-          <span class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="1.7"/></svg></span>
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="1.7"/></svg></span>
           <div><div class="k">Город</div><div class="v">Бердянск · отправка по России</div></div>
         </div>
         <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:34px">
           <a href="https://t.me/+79900459624" target="_blank" rel="noopener" class="btn btn-primary" data-cursor><span>Telegram</span>
-            <svg viewBox="0 0 24 24" fill="none"><path d="M21 5 3 12l5 2 2 5 3-3 4 3 4-14Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 5 3 12l5 2 2 5 3-3 4 3 4-14Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
           <a href="https://wa.me/79900459624" target="_blank" rel="noopener" class="btn btn-ghost" data-cursor><span>WhatsApp</span>
-            <svg viewBox="0 0 24 24" fill="none"><path d="M3 21l1.6-4A8 8 0 1 1 8 19.4L3 21Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 21l1.6-4A8 8 0 1 1 8 19.4L3 21Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
           </a>
         </div>
       </div>
@@ -812,22 +866,22 @@
   </div>
 </footer>
 
-<div class="lightbox" id="lightbox" aria-hidden="true">
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Просмотр фотографии" aria-hidden="true">
   <img id="lightboxImg" src="" alt="">
   <button class="lightbox-close" aria-label="Закрыть">&times;</button>
 </div>
 
 <div class="mobile-cta" id="mobileCta">
   <a href="https://t.me/+79900459624" target="_blank" rel="noopener" class="btn btn-primary" aria-label="Написать в Telegram"><span>Telegram</span>
-    <svg viewBox="0 0 24 24" fill="none"><path d="M21 5 3 12l5 2 2 5 3-3 4 3 4-14Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 5 3 12l5 2 2 5 3-3 4 3 4-14Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </a>
   <a href="https://wa.me/79900459624" target="_blank" rel="noopener" class="btn btn-light" aria-label="Написать в WhatsApp"><span>WhatsApp</span>
-    <svg viewBox="0 0 24 24" fill="none"><path d="M3 21l1.6-4A8 8 0 1 1 8 19.4L3 21Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 21l1.6-4A8 8 0 1 1 8 19.4L3 21Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
   </a>
 </div>
 
 <button class="totop" id="toTop" aria-label="Наверх">
-  <svg viewBox="0 0 24 24" fill="none"><path d="M12 19V5M6 11l6-6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
 </button>
 
 <script>
@@ -836,15 +890,18 @@
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   /* Preloader brand letters */
-  var mark = document.getElementById("preMark");
+  var mark = document.getElementById("preMark") || document.createElement("div");
   "Море в подушке".split("").forEach(function(ch,i){
     var s = document.createElement("span");
     s.textContent = ch === " " ? " " : ch;
     s.style.animationDelay = (0.25 + i*0.035) + "s";
     mark.appendChild(s);
   });
+  var revealed = false;
   function reveal(){
-    document.getElementById("preloader").classList.add("done");
+    if(revealed) return; revealed = true;
+    var pre = document.getElementById("preloader");
+    if(pre) pre.classList.add("done");
     document.body.classList.remove("is-loading");
     document.documentElement.classList.add("ready");
   }
@@ -857,7 +914,7 @@
   var content = document.getElementById("sheroContent");
   var cue = document.getElementById("scrollCue");
   function heroTick(){
-    if(reduce || !shero) return;
+    if(reduce || !shero || !media || !content) return;
     var dist = shero.offsetHeight - window.innerHeight;
     var p = dist > 0 ? Math.min(Math.max(-shero.getBoundingClientRect().top / dist, 0), 1) : 0;
     // smooth-scroll reveal: окно раскрывается из центра во весь экран + лёгкий зум-аут
@@ -877,37 +934,66 @@
   var mobileCta = document.getElementById("mobileCta");
   function onScroll(){
     var y = window.scrollY;
-    nav.classList.toggle("scrolled", y > window.innerHeight*0.6);
-    toTop.classList.toggle("show", y > window.innerHeight);
+    if(nav) nav.classList.toggle("scrolled", y > window.innerHeight*0.6);
+    if(toTop) toTop.classList.toggle("show", y > window.innerHeight);
     if(mobileCta) mobileCta.classList.toggle("show", y > window.innerHeight*0.85);
     heroTick();
   }
-  window.addEventListener("scroll", onScroll, {passive:true});
+  var ticking = false;
+  function onScrollRaf(){ if(!ticking){ ticking = true; requestAnimationFrame(function(){ ticking = false; onScroll(); }); } }
+  window.addEventListener("scroll", onScrollRaf, {passive:true});
   window.addEventListener("resize", heroTick);
   onScroll();
+  if(toTop) toTop.addEventListener("click", function(){ window.scrollTo({top:0, behavior: reduce ? "auto" : "smooth"}); });
 
   /* Mobile menu */
   var burger = document.getElementById("burger");
   var links = document.getElementById("navLinks");
-  burger.addEventListener("click", function(){
-    var open = links.classList.toggle("open");
+  var backdrop = document.getElementById("navBackdrop");
+  var navClose = document.getElementById("navClose");
+  function setMenu(open){
+    if(!links || !burger) return;
+    links.classList.toggle("open", open);
     burger.classList.toggle("open", open);
     burger.setAttribute("aria-expanded", open);
-  });
-  links.querySelectorAll("a").forEach(function(a){
-    a.addEventListener("click", function(){
-      links.classList.remove("open"); burger.classList.remove("open");
-      burger.setAttribute("aria-expanded","false");
+    if(backdrop) backdrop.classList.toggle("open", open);
+    document.body.style.overflow = open ? "hidden" : "";
+    if(open){ var f = navClose || links.querySelector("a"); if(f) f.focus(); }
+  }
+  if(burger && links){
+    burger.addEventListener("click", function(){ setMenu(!links.classList.contains("open")); });
+    if(navClose) navClose.addEventListener("click", function(){ setMenu(false); burger.focus(); });
+    if(backdrop) backdrop.addEventListener("click", function(){ setMenu(false); burger.focus(); });
+    var brand = document.querySelector(".brand");
+    if(brand) brand.addEventListener("click", function(){ if(links.classList.contains("open")) setMenu(false); });
+    links.querySelectorAll("a").forEach(function(a){
+      a.addEventListener("click", function(){ setMenu(false); });
     });
-  });
+    document.addEventListener("keydown", function(e){
+      if(!links.classList.contains("open")) return;
+      if(e.key === "Escape"){ setMenu(false); burger.focus(); return; }
+      if(e.key === "Tab"){
+        var f = [].slice.call(links.querySelectorAll("a,button"));
+        if(!f.length) return;
+        var first = f[0], last = f[f.length-1];
+        if(e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
+        else if(!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
+      }
+    });
+  }
 
   /* Reveal on scroll */
-  var io = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } });
-  }, {threshold:0.16, rootMargin:"0px 0px -8% 0px"});
-  document.querySelectorAll(".ro").forEach(function(el){ io.observe(el); });
+  if("IntersectionObserver" in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } });
+    }, {threshold:0.16, rootMargin:"0px 0px -8% 0px"});
+    document.querySelectorAll(".ro").forEach(function(el){ io.observe(el); });
+  } else {
+    document.querySelectorAll(".ro").forEach(function(el){ el.classList.add("in"); });
+  }
 
   /* Count up */
+  if("IntersectionObserver" in window){
   var counted = new IntersectionObserver(function(entries){
     entries.forEach(function(e){
       if(!e.isIntersecting) return;
@@ -927,6 +1013,9 @@
     });
   }, {threshold:0.6});
   document.querySelectorAll("[data-count],[data-text]").forEach(function(el){ counted.observe(el); });
+  } else {
+    document.querySelectorAll("[data-count],[data-text]").forEach(function(el){ el.textContent = el.getAttribute("data-text") || ((el.getAttribute("data-count")||"")+(el.getAttribute("data-suffix")||"")); });
+  }
 
   /* Custom cursor */
   if(window.matchMedia("(hover:hover)").matches && window.innerWidth > 900 && !reduce){
@@ -961,10 +1050,35 @@
   }
 
   /* Pickers (наволочки + линейки подушек) - каждый привязан к своему блоку */
-  function initPicker(rootSel, imgId, nameId, btnSel, altPrefix){
+  var ORDER_TG = "https://t.me/+79900459624";
+  function orderMsg(line, name){
+    return "Здравствуйте! Хочу заказать подушку 45×45: " + line + " — " + name + ", 1500 ₽.";
+  }
+  function copyText(t){
+    if(navigator.clipboard && navigator.clipboard.writeText) return navigator.clipboard.writeText(t);
+    return new Promise(function(res, rej){
+      try{ var ta=document.createElement("textarea"); ta.value=t; ta.setAttribute("readonly",""); ta.style.position="fixed"; ta.style.top="-9999px"; document.body.appendChild(ta); ta.select(); var ok=document.execCommand("copy"); document.body.removeChild(ta); ok?res():rej(); }catch(e){ rej(e); }
+    });
+  }
+  function initPicker(rootSel, imgId, nameId, btnSel, altPrefix, orderId, line){
     var root = document.querySelector(rootSel);
     var img = document.getElementById(imgId), nm = document.getElementById(nameId);
     if(!root || !img) return;
+    var order = orderId ? document.getElementById(orderId) : null;
+    if(order){
+      order.href = ORDER_TG;
+      var lbl = order.querySelector("span");
+      var origLabel = lbl ? lbl.textContent : "";
+      if(nm) order.setAttribute("data-msg", orderMsg(line, nm.textContent));
+      order.addEventListener("click", function(){
+        var msg = order.getAttribute("data-msg") || "";
+        if(!msg || !lbl) return;
+        copyText(msg).then(function(){
+          lbl.textContent = "Текст заказа скопирован";
+          setTimeout(function(){ lbl.textContent = origLabel; }, 2500);
+        }).catch(function(){});
+      });
+    }
     var btns = root.querySelectorAll(btnSel);
     btns.forEach(function(b){
       var pre = new Image(); pre.src = b.getAttribute("data-img"); // preload
@@ -972,6 +1086,7 @@
         btns.forEach(function(x){ x.setAttribute("aria-pressed","false"); });
         b.setAttribute("aria-pressed","true");
         var name = b.getAttribute("data-name");
+        if(order) order.setAttribute("data-msg", orderMsg(line, name));
         img.style.opacity = "0";
         setTimeout(function(){
           img.src = b.getAttribute("data-img");
@@ -982,27 +1097,75 @@
       });
     });
   }
-  initPicker("#seaPicker","seaImg","seaName",".thumb","Подушка ");
-  initPicker("#elegPicker","elegImg","elegName",".swatch","Подушка цвета ");
-  initPicker("#authPicker","authImg","authName",".thumb","Подушка ");
+  initPicker("#seaPicker","seaImg","seaName",".thumb","Подушка ","seaOrder","Морская линейка");
+  initPicker("#elegPicker","elegImg","elegName",".swatch","Подушка цвета ","elegOrder","Элегантная линейка");
+  initPicker("#authPicker","authImg","authName",".thumb","Подушка ","authOrder","Авторская линейка");
+
+  /* Листание пальцем: свайп по картинке переключает сюжет/цвет (переиспользует клик кнопок) */
+  function enableSwipe(rootSel, btnSel){
+    var root = document.querySelector(rootSel);
+    if(!root) return;
+    var stage = root.querySelector(".picker-stage") || root;
+    var btns = root.querySelectorAll(btnSel);
+    if(!btns.length) return;
+    var x0=0, y0=0, track=false;
+    stage.addEventListener("touchstart", function(e){
+      var t=e.changedTouches[0]; x0=t.clientX; y0=t.clientY; track=true;
+    }, {passive:true});
+    stage.addEventListener("touchend", function(e){
+      if(!track) return; track=false;
+      var t=e.changedTouches[0], dx=t.clientX-x0, dy=t.clientY-y0;
+      if(Math.abs(dx)<40 || Math.abs(dx)<Math.abs(dy)) return;
+      var cur=0;
+      btns.forEach(function(b,i){ if(b.getAttribute("aria-pressed")==="true") cur=i; });
+      var n = dx<0 ? (cur+1)%btns.length : (cur-1+btns.length)%btns.length;
+      btns[n].click();
+    }, {passive:true});
+  }
+  enableSwipe("#seaPicker",".thumb");
+  enableSwipe("#elegPicker",".swatch");
+  enableSwipe("#authPicker",".thumb");
 
   /* Lightbox: клик по картинке материалов раскрывает её на весь экран */
   var lb = document.getElementById("lightbox"), lbImg = document.getElementById("lightboxImg");
-  function closeLb(){ lb.classList.remove("open"); lb.setAttribute("aria-hidden","true"); }
+  var lbReturn = null;
+  function closeLb(){
+    if(!lb) return;
+    lb.classList.remove("open");
+    lb.setAttribute("aria-hidden","true");
+    document.body.style.overflow = "";
+    if(lbReturn && lbReturn.focus){ lbReturn.focus(); lbReturn = null; }
+  }
+  function openLb(im){
+    if(!lb || !lbImg) return;
+    lbReturn = im;
+    lbImg.src = im.currentSrc || im.src;
+    lbImg.alt = im.alt;
+    lb.classList.add("open");
+    lb.setAttribute("aria-hidden","false");
+    document.body.style.overflow = "hidden";
+    var c = lb.querySelector(".lightbox-close"); if(c) c.focus();
+  }
   document.querySelectorAll(".mat-visual img, .zphoto img").forEach(function(im){
-    im.addEventListener("click", function(){
-      lbImg.src = im.currentSrc || im.src;
-      lbImg.alt = im.alt;
-      lb.classList.add("open");
-      lb.setAttribute("aria-hidden","false");
-    });
+    im.setAttribute("role","button");
+    im.setAttribute("tabindex","0");
+    im.setAttribute("aria-haspopup","dialog");
+    im.addEventListener("click", function(){ openLb(im); });
+    im.addEventListener("keydown", function(e){ if(e.key === "Enter" || e.key === " "){ e.preventDefault(); openLb(im); } });
   });
   if(lb){
-    lb.addEventListener("click", closeLb);
-    document.addEventListener("keydown", function(e){ if(e.key === "Escape") closeLb(); });
+    var lbClose = lb.querySelector(".lightbox-close");
+    lb.addEventListener("click", function(e){ if(e.target === lb) closeLb(); });
+    if(lbClose) lbClose.addEventListener("click", closeLb);
+    document.addEventListener("keydown", function(e){
+      if(!lb.classList.contains("open")) return;
+      if(e.key === "Escape"){ closeLb(); return; }
+      if(e.key === "Tab"){ e.preventDefault(); if(lbClose) lbClose.focus(); }
+    });
   }
 
-  document.getElementById("year").textContent = new Date().getFullYear();
+  var yearEl = document.getElementById("year");
+  if(yearEl) yearEl.textContent = new Date().getFullYear();
 })();
 </script>
 </body>
