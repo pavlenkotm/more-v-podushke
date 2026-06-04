@@ -1,0 +1,6 @@
+# Исходники и служебное — в публичный сайт не нужны
+SITE_FOTO/
+.claude/
+*.pdf
+*.jpeg
+.playwright-mcp/

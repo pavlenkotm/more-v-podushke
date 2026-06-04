@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-label="Море в подушке">
+  <rect x="4" y="4" width="40" height="40" rx="13" fill="#2f8a9b"/>
+  <g fill="none" stroke="#f6ecd6" stroke-width="2.6" stroke-linecap="round">
+    <path d="M12 20q3 -4.2 6 0t6 0t6 0t6 0"/>
+    <path d="M12 28q3 -4.2 6 0t6 0t6 0t6 0"/>
+  </g>
+</svg>

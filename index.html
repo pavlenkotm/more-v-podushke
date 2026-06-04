@@ -1,0 +1,1009 @@
+<!doctype html>
+<!--
+  Море в подушке - одностраничный сайт
+  Бердянск. Подушки 45x45 из хлопка с наполнителем из морской водоросли зостеры.
+  Автор: pavlenkotm
+  Один файл, без сборки. Ассеты - в папке assets/ (ASCII-копии из SITE_FOTO).
+-->
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Море в подушке - натуральные подушки с зостерой · Бердянск</title>
+<meta name="description" content="Подушки 45x45 из хлопка с наполнителем из морской водоросли зостеры. Морская, песочная и авторская линейки. Ручная работа, Бердянск.">
+<meta name="theme-color" content="#0c3b46">
+<link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Море в подушке - подушки с зостерой · Бердянск">
+<meta property="og:description" content="Подушки 45×45 из хлопка с наполнителем из морской водоросли зостеры. Ручная работа, Бердянск.">
+<meta property="og:url" content="https://pavlenkotm.github.io/more-v-podushke/">
+<meta property="og:image" content="https://pavlenkotm.github.io/more-v-podushke/assets/hero-main.jpg">
+<meta property="og:locale" content="ru_RU">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://pavlenkotm.github.io/more-v-podushke/assets/hero-main.jpg">
+<link rel="preload" as="image" href="assets/hero-main.jpg" fetchpriority="high">
+<!-- При переходе на свой домен заменить og:url / og:image / twitter:image на новый адрес -->
+<meta name="author" content="pavlenkotm">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Onest:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --sea-deep:#0c3b46;
+    --sea:#176074;
+    --sea-mid:#2f8a9b;
+    --foam:#e7f1ee;
+    --sand:#e3d2b4;
+    --sand-deep:#c8ad7f;
+    --cream:#f7f1e6;
+    --paper:#fbf7ef;
+    --ink:#15282d;
+    --ink-soft:#3f565c;
+    --line:rgba(21,40,45,.14);
+    --shadow-sm:0 2px 10px rgba(12,59,70,.06);
+    --shadow:0 18px 50px -20px rgba(12,59,70,.35);
+    --shadow-lg:0 40px 90px -30px rgba(12,59,70,.45);
+    --maxw:1240px;
+    --ease:cubic-bezier(.22,1,.36,1);
+    --serif:"Cormorant Garamond",Georgia,serif;
+    --sans:"Onest",system-ui,-apple-system,Segoe UI,sans-serif;
+  }
+
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;font-family:var(--sans);color:var(--ink);
+    background:
+      radial-gradient(900px 520px at 88% 10%, rgba(47,138,155,.055), transparent 60%),
+      radial-gradient(820px 620px at 4% 86%, rgba(200,173,127,.07), transparent 55%),
+      var(--paper);
+    background-attachment:fixed;
+    font-weight:400;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+  }
+  body.is-loading{overflow:hidden;height:100vh}
+
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:9000;opacity:.04;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    mix-blend-mode:multiply;
+  }
+
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.04;letter-spacing:-.01em;margin:0}
+  p{margin:0}
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px}
+  @media(max-width:640px){.wrap{padding:0 22px}}
+
+  .eyebrow{font-size:12px;letter-spacing:.34em;text-transform:uppercase;font-weight:600;
+    color:var(--sea);display:inline-flex;align-items:center;gap:12px}
+  .eyebrow::before{content:"";width:34px;height:1px;background:var(--sea-mid);opacity:.6}
+  .eyebrow.light{color:var(--foam)}
+  .eyebrow.light::before{background:var(--sand)}
+  .eyebrow.light.hero-eyebrow{color:#a3e635;font-size:14px;letter-spacing:.26em;text-shadow:0 1px 8px rgba(0,0,0,.35)}
+  .eyebrow.light.hero-eyebrow::before,.eyebrow.light.hero-eyebrow::after{background:#a3e635;opacity:.9}
+  .eyebrow.light.hero-eyebrow::after{content:"";width:34px;height:1px}
+
+  .btn{display:inline-flex;align-items:center;gap:12px;cursor:pointer;border:none;
+    font-family:var(--sans);font-weight:600;font-size:14.5px;letter-spacing:.02em;
+    padding:17px 30px;border-radius:100px;position:relative;overflow:hidden;
+    transition:transform .5s var(--ease),box-shadow .5s var(--ease),color .4s var(--ease)}
+  .btn svg{width:17px;height:17px;transition:transform .5s var(--ease)}
+  .btn-primary{background:var(--sea-deep);color:var(--foam);box-shadow:var(--shadow-sm)}
+  .btn-primary::after{content:"";position:absolute;inset:0;background:var(--sea-mid);z-index:0;
+    transform:translateY(101%);transition:transform .55s var(--ease)}
+  .btn-primary span,.btn-primary svg{position:relative;z-index:1}
+  .btn-primary:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+  .btn-primary:hover::after{transform:translateY(0)}
+  .btn-primary:hover svg{transform:translateX(4px)}
+  .btn-light{background:var(--foam);color:var(--sea-deep)}
+  .btn-light::after{content:"";position:absolute;inset:0;background:#fff;z-index:0;transform:translateY(101%);transition:transform .55s var(--ease)}
+  .btn-light span,.btn-light svg{position:relative;z-index:1}
+  .btn-light:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+  .btn-light:hover::after{transform:translateY(0)}
+  .btn-ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+  .btn-ghost:hover{border-color:var(--sea);color:var(--sea);transform:translateY(-3px)}
+  .btn-ghost-light{background:transparent;color:var(--foam);border:1px solid rgba(231,241,238,.5)}
+  .btn-ghost-light:hover{border-color:var(--foam);background:rgba(231,241,238,.12);transform:translateY(-3px)}
+
+  /* ---------- Preloader ---------- */
+  #preloader{position:fixed;inset:0;z-index:10000;background:var(--sea-deep);
+    display:flex;align-items:center;justify-content:center;flex-direction:column;gap:26px;
+    transition:opacity .8s var(--ease),visibility .8s var(--ease)}
+  #preloader.done{opacity:0;visibility:hidden}
+  .pre-logo{height:84px;width:auto}
+  .pre-mark{font-family:var(--serif);color:var(--foam);font-size:clamp(24px,5vw,40px);overflow:hidden;display:flex;gap:.12em}
+  .pre-mark span{display:inline-block;transform:translateY(110%);animation:preUp .9s var(--ease) forwards}
+  @keyframes preUp{to{transform:translateY(0)}}
+  .pre-bar{width:160px;height:2px;background:rgba(231,241,238,.18);border-radius:2px;overflow:hidden}
+  .pre-bar i{display:block;height:100%;width:0;background:var(--sand);animation:preLoad 1.5s var(--ease) forwards}
+  @keyframes preLoad{to{width:100%}}
+
+  /* ---------- Nav ---------- */
+  header.nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:20px 0;
+    transition:padding .5s var(--ease),background .5s var(--ease),box-shadow .5s var(--ease)}
+  header.nav.scrolled{padding:11px 0;background:rgba(251,247,239,.85);backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--line)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:24px}
+  .brand{display:flex;align-items:center;gap:13px;font-family:var(--serif);font-size:23px;font-weight:600;letter-spacing:.01em;color:#fff;transition:color .5s var(--ease);white-space:nowrap}
+  header.nav.scrolled .brand{color:var(--ink)}
+  .brand .badge{height:42px;flex:0 0 auto;display:flex;align-items:center;justify-content:center}
+  .brand .badge img{height:100%;width:auto;filter:drop-shadow(0 1px 2px rgba(0,0,0,.3))}
+  .nav-links{display:flex;gap:34px;align-items:center}
+  .nav-links a{font-size:14px;font-weight:500;color:rgba(255,255,255,.85);position:relative;padding:4px 0;transition:color .3s}
+  header.nav.scrolled .nav-links a{color:var(--ink-soft)}
+  .nav-links a::after{content:"";position:absolute;left:0;bottom:0;height:1.5px;width:0;background:currentColor;transition:width .4s var(--ease)}
+  .nav-links a:hover{color:#fff}
+  header.nav.scrolled .nav-links a:hover{color:var(--ink)}
+  .nav-links a:hover::after{width:100%}
+  .nav-cta{display:inline-flex}
+  .burger{display:none;width:44px;height:44px;border:1px solid rgba(255,255,255,.5);border-radius:50%;background:none;cursor:pointer;align-items:center;justify-content:center;flex-direction:column;gap:5px}
+  header.nav.scrolled .burger{border-color:var(--line)}
+  .burger span{width:18px;height:1.6px;background:#fff;transition:transform .4s var(--ease),opacity .3s}
+  header.nav.scrolled .burger span{background:var(--ink)}
+  .burger.open span:nth-child(1){transform:translateY(6.6px) rotate(45deg)}
+  .burger.open span:nth-child(2){opacity:0}
+  .burger.open span:nth-child(3){transform:translateY(-6.6px) rotate(-45deg)}
+
+  @media(max-width:1100px){
+    .nav-links{position:fixed;inset:0 0 0 auto;width:min(82vw,360px);background:var(--cream);
+      flex-direction:column;justify-content:center;gap:30px;padding:60px;
+      transform:translateX(100%);transition:transform .55s var(--ease);box-shadow:var(--shadow-lg)}
+    .nav-links.open{transform:translateX(0)}
+    .nav-links a{font-size:21px;font-family:var(--serif);color:var(--ink)!important}
+    .burger{display:flex}
+  }
+
+  /* ---------- Smooth-scroll hero ---------- */
+  .shero{position:relative;width:100%;height:210vh;background:var(--paper)}
+  @media(max-width:900px){.shero{height:165vh}}
+  .shero-sticky{position:sticky;top:0;height:100svh;width:100%;overflow:hidden;display:flex;align-items:center;justify-content:center}
+  .shero-media{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+    clip-path:inset(14% round 28px);transform:scale(1.12);will-change:clip-path,transform;background:var(--sea-deep);
+    filter:saturate(1.14) contrast(1.05) brightness(1.02)}
+  .shero-scrim{position:absolute;inset:0;pointer-events:none;
+    background:linear-gradient(180deg,rgba(8,40,48,.34) 0%,rgba(8,40,48,.05) 30%,rgba(8,40,48,.04) 58%,rgba(8,40,48,.4) 100%)}
+  .shero-content{position:relative;z-index:3;text-align:center;color:#fff;max-width:880px;padding:0 28px;will-change:opacity,transform}
+  .shero-content h1{font-size:clamp(48px,9.5vw,140px);font-weight:500;margin:22px 0 0;color:#fff;text-shadow:0 2px 22px rgba(0,0,0,.5),0 1px 3px rgba(0,0,0,.35)}
+  .shero-content h1 .ital{font-style:italic;color:var(--sand)}
+  .shero-lede{max-width:560px;margin:26px auto 38px;font-size:clamp(16px,2vw,19px);color:rgba(255,255,255,.95);text-shadow:0 1px 14px rgba(0,0,0,.55),0 1px 2px rgba(0,0,0,.4)}
+  .shero-actions{display:flex;gap:16px;flex-wrap:wrap;justify-content:center}
+  .scroll-cue{position:absolute;left:50%;bottom:38px;transform:translateX(-50%);z-index:4;
+    display:flex;flex-direction:column;align-items:center;gap:12px;color:rgba(255,255,255,.85);font-size:11px;letter-spacing:.28em;text-transform:uppercase}
+  .scroll-cue .mouse{width:24px;height:38px;border:1.5px solid rgba(255,255,255,.8);border-radius:14px;position:relative}
+  .scroll-cue .mouse::after{content:"";position:absolute;top:7px;left:50%;width:3px;height:7px;border-radius:3px;background:#fff;transform:translateX(-50%);animation:scrollDot 1.8s var(--ease) infinite}
+  @keyframes scrollDot{0%{opacity:0;transform:translate(-50%,0)}30%{opacity:1}70%{opacity:1}100%{opacity:0;transform:translate(-50%,12px)}}
+
+  /* marquee band */
+  .band{background:var(--sea-deep);color:var(--foam);padding:20px 0;overflow:hidden;white-space:nowrap}
+  .band-track{display:inline-flex;gap:50px;animation:marquee 34s linear infinite;will-change:transform}
+  .band-track span{font-family:var(--serif);font-size:22px;font-style:italic;display:inline-flex;align-items:center;gap:50px}
+  .band-track span::after{content:"";width:7px;height:7px;border-radius:50%;background:var(--sand)}
+  @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  /* ---------- generic section ---------- */
+  section{position:relative}
+  .sec-pad{padding:120px 0}
+  @media(max-width:640px){.sec-pad{padding:84px 0}}
+  .sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:40px;margin-bottom:64px;flex-wrap:wrap}
+  .sec-head h2{font-size:clamp(34px,5.5vw,68px)}
+  .sec-head .lead{max-width:440px;color:var(--ink-soft);font-size:16.5px}
+  .sec-no{font-family:var(--sans);font-size:13px;letter-spacing:.2em;color:var(--sea);font-weight:600}
+
+  .ro{opacity:0;transform:translateY(34px) scale(.985);filter:blur(5px);
+    transition:opacity 1.1s var(--ease),transform 1.1s var(--ease),filter 1.1s var(--ease)}
+  .ro.in{opacity:1;transform:none;filter:none}
+  .ro.d1{transition-delay:.1s}.ro.d2{transition-delay:.2s}.ro.d3{transition-delay:.3s}.ro.d4{transition-delay:.4s}
+
+  /* ---------- Manifesto ---------- */
+  .manifesto{background:linear-gradient(180deg,var(--paper),#f1ece1);padding:72px 0;min-height:100svh;display:flex;align-items:center}
+  .manifesto>.wrap{width:100%}
+  .manifesto .sec-head{margin-bottom:22px}
+  .manifesto .big{font-family:var(--serif);font-size:clamp(24px,3.6vw,44px);line-height:1.16;max-width:17ch;font-weight:400}
+  .manifesto .big em{font-style:italic;color:var(--sea)}
+  .manifesto-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:60px;align-items:center}
+  .manifesto-left{display:flex;flex-direction:column;gap:32px}
+  .manifesto-sign{display:flex;align-items:center;gap:14px}
+  .manifesto-sign .badge{width:46px;height:46px;flex:0 0 auto;display:flex;align-items:center;justify-content:center}
+  .manifesto-sign .badge img{width:100%;height:auto;filter:drop-shadow(0 1px 2px rgba(0,0,0,.12))}
+  .manifesto-sign .sign{margin-top:0;font-size:19px;line-height:1.25}
+  .manifesto-grid p{color:var(--ink-soft);font-size:16.5px}
+  .manifesto-grid .sign{font-family:var(--serif);font-style:italic;font-size:21px;color:var(--ink);margin-top:18px}
+  .disclaimer{font-size:12.5px;color:var(--ink-soft);opacity:.8;margin-top:22px;border-left:2px solid var(--line);padding-left:14px}
+  @media(max-width:860px){.manifesto-grid{grid-template-columns:1fr;gap:38px}}
+  .manifesto-text{display:flex;flex-direction:column;gap:11px;color:var(--ink-soft);font-size:14.5px;line-height:1.55}
+  .manifesto-text strong{color:var(--ink);font-weight:600}
+  .manifesto-text .sign{font-family:var(--serif);font-style:italic;font-size:22px;color:var(--ink);margin-top:12px}
+  .manifesto-photo{border-radius:20px;overflow:hidden;box-shadow:var(--shadow-sm);margin-bottom:16px}
+  .manifesto-photo img{width:100%;height:auto;display:block;aspect-ratio:5/2;object-fit:cover}
+
+  /* shared photo frame */
+  .shot{position:relative;aspect-ratio:1/1;border-radius:18px;overflow:hidden;background:#eef3ec}
+  .shot img{width:100%;height:100%;object-fit:cover;transition:transform 1.1s var(--ease)}
+  .shot .tag{position:absolute;left:16px;top:16px;z-index:2;background:rgba(251,247,239,.92);
+    font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--sea-deep);padding:7px 13px;border-radius:100px}
+  .shot .dim{position:absolute;right:14px;bottom:13px;z-index:2;font-size:12px;letter-spacing:.06em;color:var(--sea-deep);font-weight:600;background:rgba(251,247,239,.85);padding:4px 10px;border-radius:100px}
+
+  /* ---------- Products (3 lines) ---------- */
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+  @media(max-width:980px){.cards{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:600px){.cards{grid-template-columns:1fr}}
+  .card{background:#fff;border-radius:26px;padding:18px;box-shadow:var(--shadow-sm);
+    border:1px solid var(--line);transition:transform .6s var(--ease),box-shadow .6s var(--ease);cursor:pointer}
+  .card:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg)}
+  .card:hover .shot img{transform:scale(1.05)}
+  .card-body{padding:22px 10px 10px}
+  .card h3{font-size:27px}
+  .card .desc{color:var(--ink-soft);font-size:14.5px;margin:9px 0 18px;min-height:64px}
+  .card-foot{display:flex;align-items:baseline;justify-content:space-between;border-top:1px solid var(--line);padding-top:16px}
+  .price{font-family:var(--serif);font-size:30px;color:var(--sea-deep)}
+  .price small{font-size:14px;color:var(--ink-soft);font-family:var(--sans)}
+  .card .more{font-size:13px;font-weight:600;color:var(--sea);display:inline-flex;align-items:center;gap:7px}
+  .card .more svg{width:15px;height:15px;transition:transform .4s var(--ease)}
+  .card:hover .more svg{transform:translateX(4px)}
+
+  /* sea gallery */
+  .gal-head{margin:74px 0 26px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:baseline;text-align:center}
+  @media(max-width:860px){.gal-head{grid-template-columns:1fr;text-align:center}}
+  .gal-head h3{font-size:clamp(24px,3.5vw,38px)}
+  .gal-head span{color:var(--ink-soft);font-size:14.5px}
+  .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+  @media(max-width:900px){.gallery{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:480px){.gallery{grid-template-columns:1fr}}
+  .gitem{cursor:pointer}
+  .gitem .shot{border-radius:20px;box-shadow:var(--shadow-sm)}
+  .gitem:hover .shot img{transform:scale(1.06)}
+  .gitem .name{margin-top:14px;font-family:var(--serif);font-size:20px}
+  .gitem .name b{font-family:var(--sans);font-size:14px;font-weight:600;color:var(--sea);float:right}
+
+  /* ---------- Pillowcases / colors ---------- */
+  .cases{background:linear-gradient(180deg,#eef3ec,var(--paper))}
+  .colors{display:grid;grid-template-columns:repeat(6,1fr);gap:18px}
+  @media(max-width:900px){.colors{grid-template-columns:repeat(3,1fr)}}
+  @media(max-width:480px){.colors{grid-template-columns:repeat(2,1fr)}}
+  .color{text-align:center;cursor:pointer}
+  .color .shot{border-radius:16px;box-shadow:var(--shadow-sm);transition:transform .5s var(--ease)}
+  .color:hover .shot{transform:translateY(-6px)}
+  .color .cn{margin-top:12px;font-size:14px;font-weight:500;color:var(--ink)}
+  .cases-note{margin-top:40px;display:flex;gap:14px;flex-wrap:wrap;align-items:center;color:var(--ink-soft);font-size:14.5px}
+  .cases-note .chip{display:inline-flex;align-items:center;gap:9px;border:1px solid var(--line);border-radius:100px;padding:10px 18px;background:#fff}
+  .cases-note .chip svg{width:16px;height:16px;color:var(--sea)}
+  /* interactive color picker */
+  .picker{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;margin-top:10px}
+  @media(max-width:860px){.picker{grid-template-columns:1fr;gap:34px}}
+  .picker-stage .shot{aspect-ratio:1/1;border-radius:28px;background:#fff;box-shadow:var(--shadow);padding:6%}
+  .picker-stage .shot img{border-radius:14px;transition:opacity .35s var(--ease)}
+  .picker-info .plabel{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-soft)}
+  .picker-info h3{font-size:clamp(36px,5vw,56px);margin:10px 0 8px}
+  .picker-info .pprice{font-family:var(--serif);font-size:32px;color:var(--sea-deep);font-style:italic}
+  .swatches{display:flex;gap:16px;margin:30px 0 0;flex-wrap:wrap}
+  .swatch{width:48px;height:48px;border-radius:50%;cursor:pointer;border:none;padding:0;position:relative;
+    box-shadow:inset 0 0 0 1px rgba(21,40,45,.12);transition:transform .35s var(--ease)}
+  .swatch::after{content:"";position:absolute;inset:-6px;border-radius:50%;border:2px dashed var(--sea);opacity:0;transition:opacity .3s var(--ease)}
+  .swatch[aria-pressed="true"]::after{opacity:1}
+  .swatch:hover{transform:scale(1.08)}
+  .picker-foot{margin-top:30px;color:var(--ink-soft);font-size:14.5px;max-width:340px}
+  .picker-more{text-align:center;margin-top:56px;color:var(--ink-soft);font-size:16px}
+  .picker-more a{color:var(--sea);text-decoration:underline;text-underline-offset:3px;font-weight:500}
+  .thumbs{display:flex;gap:14px;margin:30px 0 0;flex-wrap:wrap}
+  .thumb{width:76px;height:76px;border-radius:14px;overflow:hidden;cursor:pointer;border:none;padding:0;background:#fff;
+    box-shadow:inset 0 0 0 1px var(--line);position:relative;transition:transform .35s var(--ease)}
+  .thumb img{width:100%;height:100%;object-fit:cover}
+  .thumb::after{content:"";position:absolute;inset:3px;border-radius:11px;border:2px dashed var(--sea);opacity:0;transition:opacity .3s var(--ease)}
+  .thumb[aria-pressed="true"]::after{opacity:1}
+  .thumb:hover{transform:translateY(-3px)}
+
+  /* ---------- Materials ---------- */
+  .mat-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+  @media(max-width:860px){.mat-grid{grid-template-columns:1fr;gap:40px}}
+  .mat-visual .shot{aspect-ratio:4/3;border-radius:26px;box-shadow:var(--shadow);cursor:zoom-in}
+  .lightbox{position:fixed;inset:0;z-index:10001;background:rgba(8,40,48,.93);backdrop-filter:blur(6px);
+    display:none;align-items:center;justify-content:center;padding:28px;cursor:zoom-out}
+  .lightbox.open{display:flex}
+  .lightbox img{max-width:96vw;max-height:92vh;border-radius:12px;box-shadow:var(--shadow-lg)}
+  .lightbox-close{position:absolute;top:22px;right:26px;width:48px;height:48px;border-radius:50%;
+    border:1px solid rgba(255,255,255,.4);background:rgba(255,255,255,.12);color:#fff;font-size:26px;line-height:1;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;transition:background .3s}
+  .lightbox-close:hover{background:rgba(255,255,255,.25)}
+  /* Zostera facts */
+  .zostera{background:linear-gradient(180deg,#eef3ec,var(--paper))}
+  .zfacts{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  @media(max-width:900px){.zfacts{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:560px){.zfacts{grid-template-columns:1fr}}
+  .zfact{background:#fff;border:1px solid var(--line);border-radius:22px;padding:30px 28px;box-shadow:var(--shadow-sm);
+    transition:transform .5s var(--ease),box-shadow .5s var(--ease);cursor:default}
+  .zfact:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+  .zfact .ic{width:50px;height:50px;border-radius:50%;background:var(--foam);color:var(--sea);display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+  .zfact .ic svg{width:24px;height:24px}
+  .zfact h3{font-size:22px;margin-bottom:8px}
+  .zfact p{color:var(--ink-soft);font-size:14.5px;line-height:1.6}
+  .znote{max-width:760px;margin:40px auto 0;text-align:center;font-size:12.5px;color:var(--ink-soft);opacity:.8}
+  .zostera .sec-head{margin-bottom:28px}
+  .zphoto{margin-bottom:28px}
+  .zphoto .shot{aspect-ratio:auto;height:clamp(200px,32vh,360px);border-radius:26px;box-shadow:var(--shadow);cursor:zoom-in;overflow:hidden}
+  .zphoto .shot img{width:100%;height:100%;object-fit:cover}
+  /* Team */
+  .team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  @media(max-width:900px){.team-grid{grid-template-columns:1fr 1fr}}
+  @media(max-width:560px){.team-grid{grid-template-columns:1fr}}
+  .member{background:#fff;border:1px solid var(--line);border-radius:24px;padding:34px;box-shadow:var(--shadow-sm);transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
+  .member:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+  .member .avatar{width:96px;height:96px;border-radius:50%;background:linear-gradient(150deg,var(--sea-mid),var(--sea-deep));color:var(--foam);
+    display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:42px;margin-bottom:20px;overflow:hidden}
+  .member .avatar img{width:100%;height:100%;object-fit:cover}
+  .member h3{font-size:26px}
+  .member .role{color:var(--sea);font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;margin:4px 0 12px}
+  .member .bio{color:var(--ink-soft);font-size:15px;line-height:1.6}
+  .mat-features{display:flex;flex-direction:column;gap:8px;margin-top:10px}
+  .feat{display:flex;gap:20px;padding:22px 0;border-top:1px solid var(--line)}
+  .feat:last-child{border-bottom:1px solid var(--line)}
+  .feat .ic{flex:0 0 auto;width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--foam);color:var(--sea)}
+  .feat .ic svg{width:22px;height:22px}
+  .feat h3{font-size:20px;margin-bottom:5px}
+  .feat p{color:var(--ink-soft);font-size:14.5px}
+
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:30px;margin-top:80px;padding-top:50px;border-top:1px solid var(--line)}
+  @media(max-width:760px){.stats{grid-template-columns:repeat(2,1fr);gap:36px}}
+  .stat .n{font-family:var(--serif);font-size:clamp(40px,6vw,64px);color:var(--sea-deep);line-height:1}
+  .stat .t{color:var(--ink-soft);font-size:13.5px;letter-spacing:.05em;margin-top:8px}
+
+  /* ---------- Delivery ---------- */
+  .delivery{background:var(--sea-deep);color:var(--foam);min-height:100svh;display:flex;align-items:center}
+  .delivery>.wrap{width:100%}
+  .delivery h2{color:var(--foam)}
+  .delivery .lead{color:rgba(231,241,238,.7)}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin-top:20px}
+  @media(max-width:760px){.steps{grid-template-columns:1fr}}
+  .step{padding:34px 30px;border:1px solid rgba(231,241,238,.16);border-radius:22px;transition:background .5s var(--ease),transform .5s var(--ease)}
+  .step:hover{background:rgba(231,241,238,.05);transform:translateY(-6px)}
+  .step .sn{font-family:var(--serif);font-size:40px;color:var(--sand);line-height:1}
+  .step h3{color:var(--foam);font-size:23px;margin:16px 0 10px}
+  .step p{color:rgba(231,241,238,.72);font-size:14.5px}
+  .delivery-note{margin-top:46px;display:flex;gap:14px;flex-wrap:wrap;color:rgba(231,241,238,.8);font-size:14px}
+  .chip{display:inline-flex;align-items:center;gap:9px;border:1px solid rgba(231,241,238,.2);border-radius:100px;padding:10px 18px}
+  .delivery .chip svg{width:16px;height:16px;color:var(--sand)}
+
+  /* ---------- Contacts ---------- */
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px}
+  @media(max-width:860px){.contact-grid{grid-template-columns:1fr;gap:44px}}
+  .contact-info .line{display:flex;gap:18px;padding:24px 0;border-bottom:1px solid var(--line);align-items:flex-start}
+  .contact-info .line:first-of-type{border-top:1px solid var(--line)}
+  .contact-info .ic{flex:0 0 auto;width:44px;height:44px;border-radius:50%;background:var(--foam);color:var(--sea);display:flex;align-items:center;justify-content:center}
+  .contact-info .ic svg{width:20px;height:20px}
+  .contact-info .k{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft)}
+  .contact-info .v{font-size:19px;font-family:var(--serif);color:var(--ink);margin-top:3px}
+  .socials{display:flex;gap:12px;margin-top:30px}
+  .socials a{width:48px;height:48px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--ink);transition:transform .4s var(--ease),background .4s,color .4s,border-color .4s}
+  .socials a:hover{background:var(--sea-deep);color:var(--foam);border-color:var(--sea-deep);transform:translateY(-4px)}
+  .socials a svg{width:20px;height:20px}
+
+  form{display:flex;flex-direction:column;gap:18px}
+  .field{position:relative}
+  .field label{position:absolute;left:18px;top:16px;color:var(--ink-soft);font-size:15px;pointer-events:none;transition:.3s var(--ease)}
+  .field input,.field textarea{width:100%;border:1px solid var(--line);background:#fff;border-radius:14px;padding:24px 18px 10px;font-family:var(--sans);font-size:15px;color:var(--ink);transition:border-color .3s,box-shadow .3s}
+  .field textarea{min-height:120px;resize:vertical}
+  .field input:focus,.field textarea:focus{outline:none;border-color:var(--sea);box-shadow:0 0 0 4px rgba(47,138,155,.12)}
+  .field select{width:100%;border:1px solid var(--line);background:#fff;border-radius:14px;padding:16px 44px 16px 18px;
+    font-family:var(--sans);font-size:15px;color:var(--ink);appearance:none;-webkit-appearance:none;cursor:pointer;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none'%3E%3Cpath d='M4 6l4 4 4-4' stroke='%233f565c' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;background-position:right 16px center;transition:border-color .3s,box-shadow .3s}
+  .field select:focus{outline:none;border-color:var(--sea);box-shadow:0 0 0 4px rgba(47,138,155,.12)}
+  .field input:focus+label,.field textarea:focus+label,
+  .field input:not(:placeholder-shown)+label,.field textarea:not(:placeholder-shown)+label{
+    top:8px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--sea)}
+  .form-note{font-size:12.5px;color:var(--ink-soft)}
+  .form-ok{display:none;background:var(--foam);color:var(--sea-deep);border-radius:14px;padding:16px 18px;font-size:14.5px}
+  .form-ok.show{display:block}
+
+  /* ---------- Footer ---------- */
+  footer{background:var(--ink);color:rgba(231,241,238,.72);padding:64px 0 34px}
+  .foot-top{display:flex;justify-content:space-between;align-items:flex-start;gap:40px;flex-wrap:wrap;padding-bottom:40px;border-bottom:1px solid rgba(231,241,238,.12)}
+  .foot-brand{font-family:var(--serif);font-size:30px;color:var(--foam);display:flex;align-items:center;gap:13px}
+  .foot-brand .badge{height:48px;display:flex;align-items:center;justify-content:center}
+  .foot-brand .badge img{height:100%;width:auto}
+  .foot-nav{display:flex;gap:28px;flex-wrap:wrap}
+  .foot-nav a{font-size:14px;transition:color .3s}
+  .foot-nav a:hover{color:var(--foam)}
+  .foot-bot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:26px;font-size:12.5px}
+
+  .cursor-dot,.cursor-ring{position:fixed;top:0;left:0;z-index:9999;pointer-events:none;border-radius:50%;transform:translate(-50%,-50%);mix-blend-mode:multiply}
+  .cursor-dot{width:7px;height:7px;background:var(--sea)}
+  .cursor-ring{width:38px;height:38px;border:1px solid var(--sea-mid);transition:width .3s,height .3s,background .3s,border-color .3s}
+  .cursor-ring.hover{width:58px;height:58px;background:rgba(47,138,155,.08)}
+  @media(hover:none),(max-width:900px){.cursor-dot,.cursor-ring{display:none}}
+
+  .totop{position:fixed;right:26px;bottom:26px;z-index:900;width:50px;height:50px;border-radius:50%;
+    background:var(--sea-deep);color:var(--foam);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;
+    opacity:0;visibility:hidden;transform:translateY(14px);transition:.45s var(--ease);box-shadow:var(--shadow)}
+  .totop.show{opacity:1;visibility:visible;transform:none}
+  .totop svg{width:18px;height:18px}
+
+  /* mobile floating action bar */
+  .mobile-cta{position:fixed;left:14px;right:14px;bottom:14px;z-index:950;display:none;gap:10px;
+    opacity:0;transform:translateY(130%);transition:opacity .5s var(--ease),transform .5s var(--ease)}
+  .mobile-cta.show{opacity:1;transform:none}
+  .mobile-cta .btn{flex:1;justify-content:center;padding:15px 20px;box-shadow:0 12px 30px -8px rgba(12,59,70,.55)}
+
+  /* mobile: designed, not shrunk */
+  @media(max-width:600px){
+    .mobile-cta{display:flex}
+    .totop{display:none}
+    .nav-cta{display:none}
+    .shero{height:138vh}
+    .shero-scrim{background:linear-gradient(180deg,rgba(8,40,48,.45) 0%,rgba(8,40,48,.16) 34%,rgba(8,40,48,.34) 68%,rgba(8,40,48,.5) 100%)}
+    .shero-content{padding:0 22px}
+    .shero-content h1{font-size:clamp(40px,12.5vw,60px)}
+    .shero-lede{margin:20px auto 30px}
+    .shero-actions{flex-direction:column;align-items:stretch;gap:12px}
+    .shero-actions .btn{width:100%;justify-content:center}
+    .hero-eyebrow{font-size:11.5px;letter-spacing:.16em}
+    .eyebrow.light.hero-eyebrow::before,.eyebrow.light.hero-eyebrow::after{width:22px}
+    .sec-head{margin-bottom:38px}
+    #contacts .contact-info > div[style*="flex"]{flex-direction:column;align-items:stretch}
+    #contacts .contact-info .btn{width:100%;justify-content:center}
+    .picker-info .pprice{font-size:28px}
+    .gal-head{margin:54px 0 24px}
+  }
+  /* premium micro-interactions */
+  .gal-head h3::after{content:"";display:block;width:52px;margin:14px auto 0;border-top:2px dashed var(--sand-deep);opacity:.65}
+  .zfact .ic,.feat .ic,.member .avatar{transition:transform .5s var(--ease)}
+  .zfact:hover .ic,.feat:hover .ic{transform:scale(1.1) rotate(-4deg)}
+  .member:hover .avatar{transform:scale(1.04)}
+  .card:hover,.case:hover{border-color:rgba(47,138,155,.38)}
+  .card .price{transition:color .4s var(--ease)}
+  .card:hover .price{color:var(--sea-mid)}
+  /* handcrafted seam between sections + richer card surfaces */
+  .sec-pad::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:64px;border-top:2px dashed rgba(200,173,127,.5)}
+  .zfact,.member{position:relative;background:linear-gradient(180deg,#ffffff,#fbf8f1)}
+  .zfact::after,.member::after{content:"";position:absolute;inset:9px;border:1.5px dashed rgba(200,173,127,.6);border-radius:16px;
+    opacity:0;transform:scale(1.012);transition:opacity .45s var(--ease),transform .45s var(--ease);pointer-events:none}
+  .zfact:hover::after,.member:hover::after{opacity:1;transform:scale(1)}
+  .btn:active{transform:scale(.97)}
+
+  @media(prefers-reduced-motion:reduce){
+    *{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
+    .ro{opacity:1;transform:none;filter:none}
+    .shero-media{clip-path:inset(0);transform:none}
+  }
+</style>
+</head>
+<body class="is-loading">
+
+<!-- Preloader -->
+<div id="preloader" aria-hidden="true">
+  <img class="pre-logo" src="assets/logo.svg" alt="">
+  <div class="pre-mark" id="preMark"></div>
+  <div class="pre-bar"><i></i></div>
+</div>
+
+<div class="cursor-ring" id="cRing"></div>
+<div class="cursor-dot" id="cDot"></div>
+
+<!-- Nav -->
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a href="#top" class="brand" aria-label="Море в подушке - на главную">
+      <span class="badge"><img src="assets/logo.svg" alt="Логотип Море в подушке"></span>
+      Море в подушке
+    </a>
+    <nav class="nav-links" id="navLinks" aria-label="Основная навигация">
+      <a href="#manifesto">Манифест</a>
+      <a href="#pillows">Подушки</a>
+      <a href="#materials">Материалы</a>
+      <a href="#zostera">Зостера</a>
+      <a href="#delivery">Доставка</a>
+      <a href="#team">Команда</a><a href="#contacts">Контакты</a>
+    </nav>
+    <a href="#contacts" class="btn btn-primary nav-cta" data-cursor><span>Заказать</span></a>
+    <button class="burger" id="burger" aria-label="Меню" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- Smooth-scroll hero (video reveal) -->
+  <section class="shero" id="hero">
+    <div class="shero-sticky">
+      <img class="shero-media" id="sheroMedia" src="assets/hero-main.jpg" alt="Подушка с морской черепахой на песчаном дне среди водорослей и кораллов" fetchpriority="high">
+      <div class="shero-scrim"></div>
+      <div class="shero-content" id="sheroContent">
+        <span class="eyebrow light hero-eyebrow">Бердянск · ручная работа</span>
+        <h1>Подушка с эффектом <span class="ital">моря</span></h1>
+        <p class="shero-lede">Подушки 45×45 из хлопка с наполнителем из морской водоросли зостеры.</p>
+        <div class="shero-actions">
+          <a href="#pillows" class="btn btn-light" data-cursor><span>Смотреть подушки</span>
+            <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="#materials" class="btn btn-ghost-light" data-cursor>О наполнителе</a>
+        </div>
+      </div>
+      <a href="#manifesto" class="scroll-cue" id="scrollCue" data-cursor aria-label="Прокрутить вниз">
+        <span class="mouse"></span>Листайте
+      </a>
+    </div>
+  </section>
+
+  <!-- Marquee band -->
+  <div class="band" aria-hidden="true">
+    <div class="band-track">
+      <span>Хлопок 100%<span></span>Зостера Азовского моря<span></span>Йод и бром<span></span>Гипоаллергенно<span></span>Ручная работа<span></span>Бердянск</span>
+      <span>Хлопок 100%<span></span>Зостера Азовского моря<span></span>Йод и бром<span></span>Гипоаллергенно<span></span>Ручная работа<span></span>Бердянск</span>
+    </div>
+  </div>
+
+  <!-- Manifesto -->
+  <section class="sec-pad manifesto" id="manifesto">
+    <div class="wrap">
+      <div class="sec-head ro"><div><span class="sec-no">01 - Манифест</span><h2>Частичка моря</h2></div></div>
+      <div class="manifesto-grid">
+        <div class="manifesto-left ro">
+          <p class="big">Море - это не всегда место.<br>Иногда это <em>ощущение, запах</em>.</p>
+          <div class="manifesto-sign">
+            <span class="badge"><img src="assets/logo.svg" alt=""></span>
+            <p class="sign">Лариса и команда<br>«Море в подушке»</p>
+          </div>
+        </div>
+        <div class="ro d1">
+          <div class="manifesto-photo"><img src="assets/manifest.jpg" alt="Льняная подушка на берегу моря среди трав" loading="lazy" decoding="async"></div>
+          <div class="manifesto-text">
+          <p>Дарим вам частичку моря - подушку с наполнителем из водоросли <strong>зостера</strong> Чёрного и Азовского морей. Она не гниёт, не боится влаги, гипоаллергенна и сама регулирует микроклимат: забирает лишнюю влагу, а в сухом воздухе отдаёт её.</p>
+          <p>В составе - йод, бром, железо, цинк, кобальт, аминокислоты и фукоидан. Морской микроклимат благотворно влияет на дыхание и нервную систему и дарит спокойный, безмятежный сон.</p>
+          <p>Если болит голова и ты чувствуешь стресс - <em>сними его морем в подушке</em>.</p>
+          <p class="disclaimer">Информация ознакомительная. Подушка не является лекарственным средством.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pillows: three lines -->
+  <section class="sec-pad" id="pillows">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="ro"><span class="sec-no">02 - Подушки</span></div>
+      </div>
+
+      <!-- Морская линейка -->
+      <div class="gal-head ro">
+        <h3>Морская линейка</h3>
+      </div>
+      <div class="picker ro" id="seaPicker">
+        <div class="picker-stage">
+          <div class="shot"><img id="seaImg" src="assets/turtle.png" alt="Подушка Черепаха" decoding="async"></div>
+        </div>
+        <div class="picker-info">
+          <div class="plabel">Сюжет</div>
+          <h3 id="seaName">Черепаха</h3>
+          <div class="pprice">1500 ₽</div>
+          <div class="thumbs" role="group" aria-label="Выбор сюжета">
+            <button class="thumb" aria-pressed="true" data-img="assets/turtle.png" data-name="Черепаха" aria-label="Черепаха" data-cursor><img src="assets/turtle.png" alt=""></button>
+            <button class="thumb" aria-pressed="false" data-img="assets/starfish.png" data-name="Морская звезда" aria-label="Морская звезда" data-cursor><img src="assets/starfish.png" alt=""></button>
+            <button class="thumb" aria-pressed="false" data-img="assets/seahorse.png" data-name="Морской конёк" aria-label="Морской конёк" data-cursor><img src="assets/seahorse.png" alt=""></button>
+            <button class="thumb" aria-pressed="false" data-img="assets/shells.png" data-name="Ракушки" aria-label="Ракушки" data-cursor><img src="assets/shells.png" alt=""></button>
+          </div>
+          <p class="picker-foot">Каждый сюжет - на подушке 45×45 с наполнителем из зостеры.</p>
+        </div>
+      </div>
+
+      <!-- Элегантная линейка -->
+      <div class="gal-head ro">
+        <h3>Элегантная линейка</h3>
+      </div>
+      <div class="picker ro" id="elegPicker">
+        <div class="picker-stage">
+          <div class="shot"><img id="elegImg" src="assets/beige.png" alt="Подушка цвета Песочный" decoding="async"></div>
+        </div>
+        <div class="picker-info">
+          <div class="plabel">Цвет</div>
+          <h3 id="elegName">Песочный</h3>
+          <div class="pprice">1500 ₽</div>
+          <div class="swatches" role="group" aria-label="Выбор цвета подушки">
+            <button class="swatch" style="background:#ece0c8" data-img="assets/beige.png" data-name="Песочный" aria-pressed="true" aria-label="Песочный" data-cursor></button>
+            <button class="swatch" style="background:#b18a5e" data-img="assets/brown.png" data-name="Коричневый" aria-pressed="false" aria-label="Коричневый" data-cursor></button>
+            <button class="swatch" style="background:#c0552f" data-img="assets/terracotta.png" data-name="Терракот" aria-pressed="false" aria-label="Терракот" data-cursor></button>
+            <button class="swatch" style="background:#e9bb3e" data-img="assets/yellow.png" data-name="Жёлтый" aria-pressed="false" aria-label="Жёлтый" data-cursor></button>
+            <button class="swatch" style="background:#26282b" data-img="assets/black.png" data-name="Графит" aria-pressed="false" aria-label="Графит" data-cursor></button>
+            <button class="swatch" style="background:#fbfbf9" data-img="assets/white.png" data-name="Белый" aria-pressed="false" aria-label="Белый" data-cursor></button>
+          </div>
+          <p class="picker-foot">Спокойная однотонная классика - шесть оттенков под любой интерьер.</p>
+        </div>
+      </div>
+
+      <!-- Author collection: pick a design -->
+      <div class="gal-head ro">
+        <h3>Авторская линейка</h3>
+      </div>
+      <div class="picker ro" id="authPicker">
+        <div class="picker-stage">
+          <div class="shot"><img id="authImg" src="assets/author1.png" alt="Авторская подушка Незабудки" decoding="async"></div>
+        </div>
+        <div class="picker-info">
+          <div class="plabel">Узор</div>
+          <h3 id="authName">Незабудки</h3>
+          <div class="pprice">1500 ₽</div>
+          <div class="thumbs" role="group" aria-label="Выбор узора">
+            <button class="thumb" aria-pressed="true" data-img="assets/author1.png" data-name="Незабудки" aria-label="Незабудки" data-cursor><img src="assets/author1.png" alt=""></button>
+            <button class="thumb" aria-pressed="false" data-img="assets/author2.png" data-name="Полевые цветы" aria-label="Полевые цветы" data-cursor><img src="assets/author2.png" alt=""></button>
+            <button class="thumb" aria-pressed="false" data-img="assets/author3.png" data-name="Ночной сад" aria-label="Ночной сад" data-cursor><img src="assets/author3.png" alt=""></button>
+            <button class="thumb" aria-pressed="false" data-img="assets/author4.png" data-name="Серая стёжка" aria-label="Серая стёжка" data-cursor><img src="assets/author4.png" alt=""></button>
+          </div>
+          <p class="picker-foot">Готовые узоры или ваш собственный эскиз - на подушке 45×45 с зостерой.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Materials -->
+  <section class="sec-pad" id="materials">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="ro"><span class="sec-no">03 - Материалы</span><h2>Что внутри</h2></div>
+      </div>
+
+      <div class="mat-grid">
+        <div class="mat-visual ro">
+          <div class="shot"><img src="assets/materials.jpg" alt="Разрез подушки: хлопковый чехол и наполнитель из зостеры" loading="lazy" decoding="async"></div>
+        </div>
+        <div class="ro d1">
+          <div class="mat-features">
+            <div class="feat">
+              <span class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3c4 4 6 7 6 11a6 6 0 1 1-12 0c0-4 2-7 6-11Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></span>
+              <div><h3>Наполнитель - зостера</h3><p>Сухая морская трава Азовского моря. Йод, бром, микроэлементы и фукоидан; отводит влагу и держит прохладу.</p></div>
+            </div>
+            <div class="feat">
+              <span class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12a8 8 0 0 1 16 0M4 12a8 8 0 0 0 16 0M12 4v16" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span>
+              <div><h3>Верх - хлопок 100%</h3><p>Плотная дышащая ткань, приятная к коже и выдерживающая частые стирки.</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="stats">
+        <div class="stat ro"><div class="n" data-count="45" data-suffix="×45">0</div><div class="t">сантиметров, единый размер</div></div>
+        <div class="stat ro d1"><div class="n" data-count="100" data-suffix="%">0</div><div class="t">натуральный состав</div></div>
+        <div class="stat ro d2"><div class="n" data-count="2" data-suffix="">0</div><div class="t">материала: хлопок и зостера</div></div>
+        <div class="stat ro d3"><div class="n" data-text="∞">∞</div><div class="t">запах моря в каждой</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Zostera -->
+  <section class="sec-pad zostera" id="zostera">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="ro"><span class="sec-no">04 - Зостера</span><h2>Сила зостеры</h2></div>
+      </div>
+      <div class="zphoto ro"><div class="shot"><img src="assets/zostera.jpg" alt="Заросли морской водоросли зостеры в лучах солнца под водой" loading="lazy" decoding="async"></div></div>
+      <div class="zfacts">
+        <div class="zfact ro">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M3 8c2 0 2-2 4-2s2 2 4 2 2-2 4-2 2 2 4 2M3 14c2 0 2-2 4-2s2 2 4 2 2-2 4-2 2 2 4 2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span>
+          <h3>Йод и бром</h3>
+          <p>Морской микроклимат прямо у изголовья - лёгкое дыхание моря рядом всю ночь.</p>
+        </div>
+        <div class="zfact ro d1">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3c4 4 6 7 6 11a6 6 0 1 1-12 0c0-4 2-7 6-11Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></span>
+          <h3>Не боится влаги</h3>
+          <p>Не подвержена гниению и не теряет свойств при намокании - служит долго.</p>
+        </div>
+        <div class="zfact ro d2">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M9 11.5l2 2 4-4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <h3>Гипоаллергенно</h3>
+          <p>Высокое содержание солей кальция: не заводятся пылевой клещ и насекомые.</p>
+        </div>
+        <div class="zfact ro">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M4 8h11a3 3 0 1 0-3-3M4 12h15a3 3 0 1 1-3 3M4 16h9" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span>
+          <h3>Регулирует влажность</h3>
+          <p>Забирает лишнюю влагу из воздуха, а в сухом помещении отдаёт её обратно.</p>
+        </div>
+        <div class="zfact ro d1">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M5 19c7 0 14-5 14-14 0 0-12-1-14 8a6 6 0 0 0 0 6Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M5 19c2-4 5-6 9-7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span>
+          <h3>Микроэлементы</h3>
+          <p>Йод, железо, цинк, кобальт, аминокислоты и полисахарид фукоидан.</p>
+        </div>
+        <div class="zfact ro d2">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M20 14a8 8 0 0 1-10-10 8 8 0 1 0 10 10Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></span>
+          <h3>Спокойный сон</h3>
+          <p>Мягкий йодистый аромат помогает расслабиться, снять стресс и легче засыпать.</p>
+        </div>
+      </div>
+      <p class="znote ro d1">Информация о свойствах зостеры носит ознакомительный характер и не заменяет консультацию врача.</p>
+    </div>
+  </section>
+
+  <!-- Delivery -->
+  <section class="sec-pad delivery" id="delivery">
+    <div class="wrap">
+      <div class="sec-head" style="display:block">
+        <div class="ro"><span class="eyebrow light">05 - Доставка</span><h2>Как получить</h2>
+          <p class="lead" style="margin-top:16px;max-width:none">Отправляем по всей России - доставка от 1000 ₽, расчёт индивидуально по тарифу перевозчика.</p>
+        </div>
+      </div>
+      <div class="steps">
+        <div class="step ro" data-cursor><div class="sn">01</div><h3>Заказ</h3><p>Пишете нам в Telegram или WhatsApp - выбираем линейку, цвет и наволочку.</p></div>
+        <div class="step ro d1" data-cursor><div class="sn">02</div><h3>Расчёт доставки</h3><p>Считаем стоимость по тарифам перевозчика под ваш город - от 1000 ₽ за заказ.</p></div>
+        <div class="step ro d2" data-cursor><div class="sn">03</div><h3>Отправка</h3><p>Аккуратно упаковываем и передаём перевозчику. Сообщаем трек для отслеживания.</p></div>
+      </div>
+      <div class="delivery-note ro d1">
+        <span class="chip"><svg viewBox="0 0 24 24" fill="none"><path d="M3 7h13v8H3zM16 10h3l2 3v2h-5" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="7" cy="17" r="2" stroke="currentColor" stroke-width="1.7"/><circle cx="17" cy="17" r="2" stroke="currentColor" stroke-width="1.7"/></svg>Доставка по России - от 1000 ₽</span>
+        <span class="chip"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"/><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>Расчёт индивидуально по тарифу перевозчика</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section class="sec-pad team" id="team">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="ro"><span class="sec-no">06 - Команда</span><h2>Наша команда мастеров</h2></div>
+      </div>
+      <div class="team-grid">
+        <div class="member ro">
+          <div class="avatar"><img src="assets/larisa.jpg" alt="Лариса" loading="lazy"></div>
+          <h3>Лариса</h3>
+          <p class="role">Основатель · мастер-дизайнер</p>
+          <p class="bio">Придумала «Море в подушке» и шьёт каждую подушку своими руками. Верит, что уют начинается с дыхания моря.</p>
+        </div>
+        <div class="member ro d1">
+          <!-- ЗАМЕНИТЬ аватар на фото: <div class="avatar"><img src="assets/natalia.jpg" alt="Наталья"></div> -->
+          <div class="avatar">Н</div>
+          <h3>Наталья</h3>
+          <p class="role">Мастер-дизайнер</p>
+          <p class="bio">Подбирает ткани, цвета и морские сюжеты - чтобы каждая подушка радовала глаз и была приятной на ощупь.</p>
+        </div>
+        <div class="member ro d2">
+          <!-- ЗАМЕНИТЬ аватар на фото: <div class="avatar"><img src="assets/viktor.jpg" alt="Виктор"></div> -->
+          <div class="avatar">В</div>
+          <h3>Виктор</h3>
+          <p class="role">Идейный вдохновитель</p>
+          <p class="bio">Стоял у истоков идеи: соединить пользу морской зостеры с домашним теплом и уютом.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contacts -->
+  <section class="sec-pad" id="contacts">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="ro"><span class="sec-no">07 - Контакты</span><h2>Напишите в Telegram или WhatsApp</h2></div>
+      </div>
+
+      <div class="contact-info ro" style="max-width:640px">
+        <div class="line">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.7"/><path d="M5 20c0-3.3 3.1-6 7-6s7 2.7 7 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span>
+          <div><div class="k">Контактное лицо</div><div class="v">Лариса</div></div>
+        </div>
+        <div class="line">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M5 4h3l2 5-2 1a11 11 0 0 0 5 5l1-2 5 2v3a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></span>
+          <div><div class="k">Телефон</div><a class="v" href="tel:+79900459624">+7 990 045-96-24</a></div>
+        </div>
+        <div class="line">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="1.7"/></svg></span>
+          <div><div class="k">Город</div><div class="v">Бердянск · отправка по России</div></div>
+        </div>
+        <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:34px">
+          <a href="https://t.me/+79900459624" target="_blank" rel="noopener" class="btn btn-primary" data-cursor><span>Telegram</span>
+            <svg viewBox="0 0 24 24" fill="none"><path d="M21 5 3 12l5 2 2 5 3-3 4 3 4-14Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="https://wa.me/79900459624" target="_blank" rel="noopener" class="btn btn-ghost" data-cursor><span>WhatsApp</span>
+            <svg viewBox="0 0 24 24" fill="none"><path d="M3 21l1.6-4A8 8 0 1 1 8 19.4L3 21Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <span class="badge"><img src="assets/logo.svg" alt="Логотип Море в подушке"></span>
+        Море в подушке
+      </div>
+      <nav class="foot-nav" aria-label="Навигация в подвале">
+        <a href="#manifesto">Манифест</a><a href="#pillows">Подушки</a><a href="#materials">Материалы</a><a href="#zostera">Зостера</a><a href="#delivery">Доставка</a><a href="#team">Команда</a><a href="#contacts">Контакты</a>
+      </nav>
+    </div>
+    <div class="foot-bot">
+      <span>© <span id="year"></span> «Море в подушке», Бердянск. Натуральные подушки ручной работы.</span>
+    </div>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <img id="lightboxImg" src="" alt="">
+  <button class="lightbox-close" aria-label="Закрыть">&times;</button>
+</div>
+
+<div class="mobile-cta" id="mobileCta">
+  <a href="https://t.me/+79900459624" target="_blank" rel="noopener" class="btn btn-primary" aria-label="Написать в Telegram"><span>Telegram</span>
+    <svg viewBox="0 0 24 24" fill="none"><path d="M21 5 3 12l5 2 2 5 3-3 4 3 4-14Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </a>
+  <a href="https://wa.me/79900459624" target="_blank" rel="noopener" class="btn btn-light" aria-label="Написать в WhatsApp"><span>WhatsApp</span>
+    <svg viewBox="0 0 24 24" fill="none"><path d="M3 21l1.6-4A8 8 0 1 1 8 19.4L3 21Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+  </a>
+</div>
+
+<button class="totop" id="toTop" aria-label="Наверх">
+  <svg viewBox="0 0 24 24" fill="none"><path d="M12 19V5M6 11l6-6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
+
+<script>
+(function(){
+  "use strict";
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* Preloader brand letters */
+  var mark = document.getElementById("preMark");
+  "Море в подушке".split("").forEach(function(ch,i){
+    var s = document.createElement("span");
+    s.textContent = ch === " " ? " " : ch;
+    s.style.animationDelay = (0.25 + i*0.035) + "s";
+    mark.appendChild(s);
+  });
+  function reveal(){
+    document.getElementById("preloader").classList.add("done");
+    document.body.classList.remove("is-loading");
+    document.documentElement.classList.add("ready");
+  }
+  window.addEventListener("load", function(){ setTimeout(reveal, reduce ? 0 : 1500); });
+  setTimeout(reveal, 3500);
+
+  /* Smooth-scroll hero reveal */
+  var shero = document.getElementById("hero");
+  var media = document.getElementById("sheroMedia");
+  var content = document.getElementById("sheroContent");
+  var cue = document.getElementById("scrollCue");
+  function heroTick(){
+    if(reduce || !shero) return;
+    var dist = shero.offsetHeight - window.innerHeight;
+    var p = dist > 0 ? Math.min(Math.max(-shero.getBoundingClientRect().top / dist, 0), 1) : 0;
+    // smooth-scroll reveal: окно раскрывается из центра во весь экран + лёгкий зум-аут
+    var ins = 14 * (1 - p);
+    var rad = 28 * (1 - p);
+    media.style.clipPath = "inset(" + ins + "% round " + rad + "px)";
+    media.style.transform = "scale(" + (1.12 - 0.12 * p) + ")";
+    // заголовок виден в окне, плавно уходит во второй половине прокрутки
+    var o = p < 0.5 ? 1 : Math.max(1 - (p - 0.5) * 2, 0);
+    content.style.opacity = o;
+    content.style.transform = "translateY(" + (-Math.max(p - 0.3, 0) * 70) + "px)";
+    if(cue) cue.style.opacity = o;
+  }
+
+  var nav = document.getElementById("nav");
+  var toTop = document.getElementById("toTop");
+  var mobileCta = document.getElementById("mobileCta");
+  function onScroll(){
+    var y = window.scrollY;
+    nav.classList.toggle("scrolled", y > window.innerHeight*0.6);
+    toTop.classList.toggle("show", y > window.innerHeight);
+    if(mobileCta) mobileCta.classList.toggle("show", y > window.innerHeight*0.85);
+    heroTick();
+  }
+  window.addEventListener("scroll", onScroll, {passive:true});
+  window.addEventListener("resize", heroTick);
+  onScroll();
+
+  /* Mobile menu */
+  var burger = document.getElementById("burger");
+  var links = document.getElementById("navLinks");
+  burger.addEventListener("click", function(){
+    var open = links.classList.toggle("open");
+    burger.classList.toggle("open", open);
+    burger.setAttribute("aria-expanded", open);
+  });
+  links.querySelectorAll("a").forEach(function(a){
+    a.addEventListener("click", function(){
+      links.classList.remove("open"); burger.classList.remove("open");
+      burger.setAttribute("aria-expanded","false");
+    });
+  });
+
+  /* Reveal on scroll */
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } });
+  }, {threshold:0.16, rootMargin:"0px 0px -8% 0px"});
+  document.querySelectorAll(".ro").forEach(function(el){ io.observe(el); });
+
+  /* Count up */
+  var counted = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(!e.isIntersecting) return;
+      var el = e.target; counted.unobserve(el);
+      if(el.hasAttribute("data-text")){ el.textContent = el.getAttribute("data-text"); return; }
+      var target = parseInt(el.getAttribute("data-count"),10);
+      var suf = el.getAttribute("data-suffix")||"";
+      if(reduce){ el.textContent = target+suf; return; }
+      var dur = 1300, start = null;
+      function step(ts){
+        if(!start) start = ts;
+        var p = Math.min((ts-start)/dur,1);
+        el.textContent = Math.round((1-Math.pow(1-p,3))*target)+suf;
+        if(p<1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    });
+  }, {threshold:0.6});
+  document.querySelectorAll("[data-count],[data-text]").forEach(function(el){ counted.observe(el); });
+
+  /* Custom cursor */
+  if(window.matchMedia("(hover:hover)").matches && window.innerWidth > 900 && !reduce){
+    var dot = document.getElementById("cDot"), ring = document.getElementById("cRing");
+    var mx=0,my=0,rx=0,ry=0;
+    document.addEventListener("mousemove", function(e){
+      mx=e.clientX; my=e.clientY;
+      dot.style.transform = "translate("+mx+"px,"+my+"px) translate(-50%,-50%)";
+    });
+    (function loop(){
+      rx += (mx-rx)*0.18; ry += (my-ry)*0.18;
+      ring.style.transform = "translate("+rx+"px,"+ry+"px) translate(-50%,-50%)";
+      requestAnimationFrame(loop);
+    })();
+    document.querySelectorAll("a,button,[data-cursor],.card,.gitem,.color,.step").forEach(function(el){
+      el.addEventListener("mouseenter", function(){ ring.classList.add("hover"); });
+      el.addEventListener("mouseleave", function(){ ring.classList.remove("hover"); });
+    });
+  }
+
+  /* Magnetic buttons */
+  if(window.matchMedia("(hover:hover)").matches && !reduce){
+    document.querySelectorAll(".btn").forEach(function(btn){
+      btn.addEventListener("mousemove", function(e){
+        var r = btn.getBoundingClientRect();
+        var x = e.clientX - r.left - r.width/2;
+        var y = e.clientY - r.top - r.height/2;
+        btn.style.transform = "translate("+x*0.18+"px,"+(y*0.28 - 3)+"px)";
+      });
+      btn.addEventListener("mouseleave", function(){ btn.style.transform = ""; });
+    });
+  }
+
+  /* Pickers (наволочки + линейки подушек) - каждый привязан к своему блоку */
+  function initPicker(rootSel, imgId, nameId, btnSel, altPrefix){
+    var root = document.querySelector(rootSel);
+    var img = document.getElementById(imgId), nm = document.getElementById(nameId);
+    if(!root || !img) return;
+    var btns = root.querySelectorAll(btnSel);
+    btns.forEach(function(b){
+      var pre = new Image(); pre.src = b.getAttribute("data-img"); // preload
+      b.addEventListener("click", function(){
+        btns.forEach(function(x){ x.setAttribute("aria-pressed","false"); });
+        b.setAttribute("aria-pressed","true");
+        var name = b.getAttribute("data-name");
+        img.style.opacity = "0";
+        setTimeout(function(){
+          img.src = b.getAttribute("data-img");
+          img.alt = altPrefix + name;
+          nm.textContent = name;
+          img.style.opacity = "1";
+        }, reduce ? 0 : 180);
+      });
+    });
+  }
+  initPicker("#seaPicker","seaImg","seaName",".thumb","Подушка ");
+  initPicker("#elegPicker","elegImg","elegName",".swatch","Подушка цвета ");
+  initPicker("#authPicker","authImg","authName",".thumb","Подушка ");
+
+  /* Lightbox: клик по картинке материалов раскрывает её на весь экран */
+  var lb = document.getElementById("lightbox"), lbImg = document.getElementById("lightboxImg");
+  function closeLb(){ lb.classList.remove("open"); lb.setAttribute("aria-hidden","true"); }
+  document.querySelectorAll(".mat-visual img, .zphoto img").forEach(function(im){
+    im.addEventListener("click", function(){
+      lbImg.src = im.currentSrc || im.src;
+      lbImg.alt = im.alt;
+      lb.classList.add("open");
+      lb.setAttribute("aria-hidden","false");
+    });
+  });
+  if(lb){
+    lb.addEventListener("click", closeLb);
+    document.addEventListener("keydown", function(e){ if(e.key === "Escape") closeLb(); });
+  }
+
+  document.getElementById("year").textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
