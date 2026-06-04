@@ -279,6 +279,7 @@
   /* interactive color picker */
   .picker{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;margin-top:10px}
   @media(max-width:860px){.picker{grid-template-columns:1fr;gap:34px}}
+  .picker-stage{touch-action:pan-y}
   .picker-stage .shot{aspect-ratio:1/1;border-radius:28px;background:#fff;box-shadow:var(--shadow);padding:6%}
   .picker-stage .shot img{border-radius:14px;transition:opacity .35s var(--ease)}
   .picker-info .plabel{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-soft)}
@@ -442,8 +443,8 @@
     .shero-scrim{background:linear-gradient(180deg,rgba(8,40,48,.45) 0%,rgba(8,40,48,.16) 34%,rgba(8,40,48,.34) 68%,rgba(8,40,48,.5) 100%)}
     .shero-content{padding:0 22px}
     .shero-content h1{font-size:clamp(40px,12.5vw,60px)}
-    .shero-actions{flex-direction:column;align-items:stretch;gap:12px}
-    .shero-actions .btn{width:100%;justify-content:center}
+    .shero-actions{flex-direction:column;align-items:center;gap:12px}
+    .shero-actions .btn{width:100%;max-width:280px;justify-content:center}
     .hero-eyebrow{font-size:11.5px;letter-spacing:.16em}
     .eyebrow.light.hero-eyebrow::before,.eyebrow.light.hero-eyebrow::after{width:22px}
     .sec-head{margin-bottom:38px}
@@ -553,9 +554,7 @@
         <span class="eyebrow light hero-eyebrow">Бердянск · ручная работа</span>
         <h1>Подушка с эффектом <span class="ital">моря</span></h1>
         <div class="shero-actions">
-          <a href="#pillows" class="btn btn-light" data-cursor><span>Смотреть подушки</span>
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
+          <a href="#pillows" class="btn btn-light" data-cursor><span>Смотреть подушки</span></a>
           <a href="#materials" class="btn btn-ghost-light" data-cursor>О наполнителе</a>
         </div>
       </div>
@@ -1087,13 +1086,11 @@
         b.setAttribute("aria-pressed","true");
         var name = b.getAttribute("data-name");
         if(order) order.setAttribute("data-msg", orderMsg(line, name));
-        img.style.opacity = "0";
-        setTimeout(function(){
-          img.src = b.getAttribute("data-img");
-          img.alt = altPrefix + name;
-          nm.textContent = name;
-          img.style.opacity = "1";
-        }, reduce ? 0 : 180);
+        img.src = b.getAttribute("data-img");
+        img.alt = altPrefix + name;
+        nm.textContent = name;
+        if(reduce){ img.style.opacity = "1"; }
+        else { img.style.opacity = "0"; requestAnimationFrame(function(){ requestAnimationFrame(function(){ img.style.opacity = "1"; }); }); }
       });
     });
   }
@@ -1112,6 +1109,7 @@
     stage.addEventListener("touchstart", function(e){
       var t=e.changedTouches[0]; x0=t.clientX; y0=t.clientY; track=true;
     }, {passive:true});
+    stage.addEventListener("touchcancel", function(){ track=false; }, {passive:true});
     stage.addEventListener("touchend", function(e){
       if(!track) return; track=false;
       var t=e.changedTouches[0], dx=t.clientX-x0, dy=t.clientY-y0;
