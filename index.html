@@ -433,12 +433,12 @@
   .mobile-cta{position:fixed;left:14px;right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:950;display:none;gap:10px;
     opacity:0;transform:translateY(130%);transition:opacity .5s var(--ease),transform .5s var(--ease)}
   .mobile-cta.show{opacity:1;transform:none}
+  .mobile-cta.cta-hidden{opacity:0;visibility:hidden;transform:translateY(130%);pointer-events:none}
   .mobile-cta .btn{flex:1;justify-content:center;padding:15px 20px;box-shadow:0 12px 30px -8px rgba(12,59,70,.55)}
 
   /* mobile: designed, not shrunk */
   @media(max-width:600px){
     .mobile-cta{display:flex}
-    footer{padding-bottom:108px}
     .totop{display:none}
     .nav-cta{display:none}
     .shero{height:138vh}
@@ -837,7 +837,7 @@
           <span class="ic"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="1.7"/></svg></span>
           <div><div class="k">Город</div><div class="v">Бердянск · отправка по России</div></div>
         </div>
-        <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:34px">
+        <div id="contactCtas" style="display:flex;gap:14px;flex-wrap:wrap;margin-top:34px">
           <a href="https://t.me/+79900459624" target="_blank" rel="noopener" class="btn btn-primary" data-cursor><span>Telegram</span>
             <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 5 3 12l5 2 2 5 3-3 4 3 4-14Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
@@ -933,6 +933,7 @@
   var nav = document.getElementById("nav");
   var toTop = document.getElementById("toTop");
   var mobileCta = document.getElementById("mobileCta");
+  var contactCtas = document.getElementById("contactCtas");
   function onScroll(){
     var y = window.scrollY;
     if(nav) nav.classList.toggle("scrolled", y > window.innerHeight*0.6);
@@ -946,6 +947,16 @@
   window.addEventListener("resize", heroTick);
   onScroll();
   if(toTop) toTop.addEventListener("click", function(){ window.scrollTo({top:0, behavior: reduce ? "auto" : "smooth"}); });
+
+  /* Скрываем плавающий нижний бар, когда видны кнопки в контактах (и ниже) - чтобы не дублировать */
+  if(mobileCta && contactCtas && "IntersectionObserver" in window){
+    var ctaObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        mobileCta.classList.toggle("cta-hidden", e.isIntersecting || e.boundingClientRect.top < 0);
+      });
+    }, {threshold:0});
+    ctaObs.observe(contactCtas);
+  }
 
   /* Mobile menu */
   var burger = document.getElementById("burger");
