@@ -84,9 +84,11 @@
   .eyebrow::before{content:"";width:34px;height:1px;background:var(--sea-mid);opacity:.6}
   .eyebrow.light{color:var(--foam)}
   .eyebrow.light::before{background:var(--sand)}
-  .eyebrow.light.hero-eyebrow{color:var(--sand);font-size:14px;letter-spacing:.26em;text-shadow:0 1px 10px rgba(0,0,0,.5),0 1px 2px rgba(0,0,0,.4)}
-  .eyebrow.light.hero-eyebrow::before,.eyebrow.light.hero-eyebrow::after{background:var(--sand);opacity:.9}
-  .eyebrow.light.hero-eyebrow::after{content:"";width:34px;height:1px}
+  .eyebrow.light.hero-eyebrow{color:var(--sand);font-size:14px;letter-spacing:.26em;text-shadow:0 1px 10px rgba(0,0,0,.5),0 1px 2px rgba(0,0,0,.4);flex-direction:column;gap:6px}
+  .hero-eyebrow::before,.hero-eyebrow::after{display:none}
+  .hero-eyebrow .he-city{display:inline-flex;align-items:center;gap:12px}
+  .hero-eyebrow .he-city::before,.hero-eyebrow .he-city::after{content:"";width:30px;height:1px;background:var(--sand);opacity:.9}
+  .hero-eyebrow .he-craft{font-size:.86em;opacity:.95}
 
   .btn{display:inline-flex;align-items:center;gap:12px;cursor:pointer;border:none;
     font-family:var(--sans);font-weight:600;font-size:14.5px;letter-spacing:.02em;
@@ -446,7 +448,7 @@
     .shero-actions{flex-direction:column;align-items:center;gap:12px}
     .shero-actions .btn{width:100%;max-width:280px;justify-content:center}
     .hero-eyebrow{font-size:11.5px;letter-spacing:.16em}
-    .eyebrow.light.hero-eyebrow::before,.eyebrow.light.hero-eyebrow::after{width:22px}
+    .hero-eyebrow .he-city::before,.hero-eyebrow .he-city::after{width:22px}
     .sec-head{margin-bottom:38px}
     #contacts .contact-info > div[style*="flex"]{flex-direction:column;align-items:stretch}
     #contacts .contact-info .btn{width:100%;justify-content:center}
@@ -551,7 +553,7 @@
       <img class="shero-media" id="sheroMedia" src="assets/hero-main.jpg" alt="Подушка с морской черепахой на песчаном дне среди водорослей и кораллов" fetchpriority="high">
       <div class="shero-scrim"></div>
       <div class="shero-content" id="sheroContent">
-        <span class="eyebrow light hero-eyebrow">Бердянск · ручная работа</span>
+        <span class="eyebrow light hero-eyebrow"><span class="he-city">Бердянск</span><span class="he-craft">ручная работа</span></span>
         <h1>Подушка с эффектом <span class="ital">моря</span></h1>
         <div class="shero-actions">
           <a href="#pillows" class="btn btn-light" data-cursor><span>Смотреть подушки</span></a>
