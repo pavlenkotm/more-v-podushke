@@ -625,10 +625,10 @@
             <button class="thumb" aria-pressed="false" data-img="assets/shells.png" data-name="Ракушки" aria-label="Ракушки" data-cursor><img src="assets/shells.png" alt=""></button>
           </div>
           <p class="picker-foot">Каждый сюжет - на подушке 45×45 с наполнителем из зостеры.</p>
-          <a class="btn btn-primary picker-cta" id="seaOrder" href="https://t.me/+79900459624" target="_blank" rel="noopener" data-cursor><span>Заказать этот вариант</span>
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 5 3 12l5 2 2 5 3-3 4 3 4-14Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <a class="btn btn-primary picker-cta" id="seaOrder" href="https://wa.me/79900459624" target="_blank" rel="noopener" data-cursor><span>Заказать этот вариант</span>
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 21l1.6-4A8 8 0 1 1 8 19.4L3 21Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
           </a>
-          <p class="picker-hint">Откроется Telegram; текст заказа скопируется — вставьте его в чат.</p>
+          <p class="picker-hint">Откроется WhatsApp с готовым сообщением — просто отправьте его.</p>
         </div>
       </div>
 
@@ -653,10 +653,10 @@
             <button class="swatch" style="background:#fbfbf9" data-img="assets/white.png" data-name="Белый" aria-pressed="false" aria-label="Белый" data-cursor></button>
           </div>
           <p class="picker-foot">Спокойная однотонная классика - шесть оттенков под любой интерьер.</p>
-          <a class="btn btn-primary picker-cta" id="elegOrder" href="https://t.me/+79900459624" target="_blank" rel="noopener" data-cursor><span>Заказать этот вариант</span>
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 5 3 12l5 2 2 5 3-3 4 3 4-14Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <a class="btn btn-primary picker-cta" id="elegOrder" href="https://wa.me/79900459624" target="_blank" rel="noopener" data-cursor><span>Заказать этот вариант</span>
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 21l1.6-4A8 8 0 1 1 8 19.4L3 21Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
           </a>
-          <p class="picker-hint">Откроется Telegram; текст заказа скопируется — вставьте его в чат.</p>
+          <p class="picker-hint">Откроется WhatsApp с готовым сообщением — просто отправьте его.</p>
         </div>
       </div>
 
@@ -679,10 +679,10 @@
             <button class="thumb" aria-pressed="false" data-img="assets/author4.png" data-name="Серая стёжка" aria-label="Серая стёжка" data-cursor><img src="assets/author4.png" alt=""></button>
           </div>
           <p class="picker-foot">Готовые узоры или ваш собственный эскиз - на подушке 45×45 с зостерой.</p>
-          <a class="btn btn-primary picker-cta" id="authOrder" href="https://t.me/+79900459624" target="_blank" rel="noopener" data-cursor><span>Заказать этот вариант</span>
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 5 3 12l5 2 2 5 3-3 4 3 4-14Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <a class="btn btn-primary picker-cta" id="authOrder" href="https://wa.me/79900459624" target="_blank" rel="noopener" data-cursor><span>Заказать этот вариант</span>
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 21l1.6-4A8 8 0 1 1 8 19.4L3 21Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
           </a>
-          <p class="picker-hint">Откроется Telegram; текст заказа скопируется — вставьте его в чат.</p>
+          <p class="picker-hint">Откроется WhatsApp с готовым сообщением — просто отправьте его.</p>
         </div>
       </div>
     </div>
@@ -1062,35 +1062,16 @@
   }
 
   /* Pickers (наволочки + линейки подушек) - каждый привязан к своему блоку */
-  var ORDER_TG = "https://t.me/+79900459624";
-  function orderMsg(line, name){
-    return "Здравствуйте! Хочу заказать подушку 45×45: " + line + " — " + name + ", 1500 ₽.";
-  }
-  function copyText(t){
-    if(navigator.clipboard && navigator.clipboard.writeText) return navigator.clipboard.writeText(t);
-    return new Promise(function(res, rej){
-      try{ var ta=document.createElement("textarea"); ta.value=t; ta.setAttribute("readonly",""); ta.style.position="fixed"; ta.style.top="-9999px"; document.body.appendChild(ta); ta.select(); var ok=document.execCommand("copy"); document.body.removeChild(ta); ok?res():rej(); }catch(e){ rej(e); }
-    });
+  function orderUrl(line, name){
+    var msg = "Здравствуйте! Хочу заказать подушку 45×45: " + line + " — " + name + ", 1500 ₽.";
+    return "https://wa.me/79900459624?text=" + encodeURIComponent(msg);
   }
   function initPicker(rootSel, imgId, nameId, btnSel, altPrefix, orderId, line){
     var root = document.querySelector(rootSel);
     var img = document.getElementById(imgId), nm = document.getElementById(nameId);
     if(!root || !img) return;
     var order = orderId ? document.getElementById(orderId) : null;
-    if(order){
-      order.href = ORDER_TG;
-      var lbl = order.querySelector("span");
-      var origLabel = lbl ? lbl.textContent : "";
-      if(nm) order.setAttribute("data-msg", orderMsg(line, nm.textContent));
-      order.addEventListener("click", function(){
-        var msg = order.getAttribute("data-msg") || "";
-        if(!msg || !lbl) return;
-        copyText(msg).then(function(){
-          lbl.textContent = "Текст заказа скопирован";
-          setTimeout(function(){ lbl.textContent = origLabel; }, 2500);
-        }).catch(function(){});
-      });
-    }
+    if(order && nm) order.href = orderUrl(line, nm.textContent);
     var btns = root.querySelectorAll(btnSel);
     btns.forEach(function(b){
       var pre = new Image(); pre.src = b.getAttribute("data-img"); // preload
@@ -1098,7 +1079,7 @@
         btns.forEach(function(x){ x.setAttribute("aria-pressed","false"); });
         b.setAttribute("aria-pressed","true");
         var name = b.getAttribute("data-name");
-        if(order) order.setAttribute("data-msg", orderMsg(line, name));
+        if(order) order.href = orderUrl(line, name);
         img.src = b.getAttribute("data-img");
         img.alt = altPrefix + name;
         nm.textContent = name;
