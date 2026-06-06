@@ -24,7 +24,8 @@
 <meta name="twitter:description" content="Подушки 45×45 из хлопка с наполнителем из морской водоросли зостеры. Ручная работа, Бердянск.">
 <meta name="twitter:image" content="https://pavlenkotm.github.io/more-v-podushke/assets/hero-main.jpg">
 <link rel="canonical" href="https://pavlenkotm.github.io/more-v-podushke/">
-<link rel="preload" as="image" href="assets/hero-main.jpg" fetchpriority="high">
+<link rel="preload" as="image" type="image/webp" href="assets/hero-main.webp" media="(min-width:601px)" fetchpriority="high">
+<link rel="preload" as="image" type="image/webp" href="assets/hero-mobile.webp" media="(max-width:600px)" fetchpriority="high">
 <!-- При переходе на свой домен заменить og:url / og:image / twitter:image на новый адрес -->
 <meta name="author" content="pavlenkotm">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -176,7 +177,7 @@
     background:linear-gradient(180deg,rgba(8,40,48,.34) 0%,rgba(8,40,48,.05) 30%,rgba(8,40,48,.04) 58%,rgba(8,40,48,.4) 100%)}
   .shero-content{position:relative;z-index:3;text-align:center;color:#fff;max-width:880px;padding:0 28px;will-change:opacity,transform}
   .shero-content h1{font-size:clamp(48px,9.5vw,140px);font-weight:500;margin:22px 0 0;color:#fff;text-shadow:0 2px 22px rgba(0,0,0,.5),0 1px 3px rgba(0,0,0,.35)}
-  .shero-content h1 .ital{font-style:italic;color:var(--sand)}
+  .shero-content h1 .ital{font-style:italic;color:#63d6e0;text-shadow:0 2px 18px rgba(6,30,38,.6),0 1px 3px rgba(6,30,38,.6)}
   .shero-actions{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin-top:38px}
   .scroll-cue{position:absolute;left:50%;bottom:38px;transform:translateX(-50%);z-index:4;
     display:flex;flex-direction:column;align-items:center;gap:12px;color:rgba(255,255,255,.85);font-size:11px;letter-spacing:.28em;text-transform:uppercase}
@@ -442,9 +443,13 @@
     .totop{display:none}
     .nav-cta{display:none}
     .shero{height:138vh}
-    .shero-scrim{background:linear-gradient(180deg,rgba(8,40,48,.45) 0%,rgba(8,40,48,.16) 34%,rgba(8,40,48,.34) 68%,rgba(8,40,48,.5) 100%)}
-    .shero-content{padding:0 22px}
-    .shero-content h1{font-size:clamp(40px,12.5vw,60px)}
+    .shero-scrim{background:linear-gradient(180deg,rgba(8,40,48,.5) 0%,rgba(8,40,48,.28) 30%,rgba(8,40,48,.12) 52%,rgba(8,40,48,.5) 100%)}
+    .shero-sticky{align-items:flex-start}
+    .shero-content{padding:15svh 22px 0}
+    .shero-actions{margin-top:26px}
+    .shero-actions .btn-ghost-light{display:none}
+    .picker-cta{padding-left:22px;padding-right:22px}
+    .shero-content h1{font-size:clamp(40px,12.5vw,60px);margin-top:9svh}
     .shero-actions{flex-direction:column;align-items:center;gap:12px}
     .shero-actions .btn{width:100%;max-width:280px;justify-content:center}
     .hero-eyebrow{font-size:11.5px;letter-spacing:.16em}
@@ -550,7 +555,12 @@
   <!-- Smooth-scroll hero (video reveal) -->
   <section class="shero" id="hero">
     <div class="shero-sticky">
-      <img class="shero-media" id="sheroMedia" src="assets/hero-main.jpg" alt="Подушка с морской черепахой на песчаном дне среди водорослей и кораллов" fetchpriority="high">
+      <picture>
+        <source media="(max-width:600px)" type="image/webp" srcset="assets/hero-mobile.webp">
+        <source media="(max-width:600px)" srcset="assets/hero-mobile.jpg">
+        <source type="image/webp" srcset="assets/hero-main.webp">
+        <img class="shero-media" id="sheroMedia" src="assets/hero-main.jpg" alt="Декоративная подушка с принтом морской черепахи" fetchpriority="high">
+      </picture>
       <div class="shero-scrim"></div>
       <div class="shero-content" id="sheroContent">
         <span class="eyebrow light hero-eyebrow"><span class="he-city">Бердянск</span><span class="he-craft">ручная работа</span></span>
@@ -587,7 +597,7 @@
           </div>
         </div>
         <div class="ro d1">
-          <div class="manifesto-photo"><img src="assets/manifest.jpg" alt="Льняная подушка на берегу моря среди трав" loading="lazy" decoding="async"></div>
+          <div class="manifesto-photo"><img src="assets/manifest.webp" alt="Льняная подушка на берегу моря среди трав" loading="lazy" decoding="async"></div>
           <div class="manifesto-text">
           <p>Дарим вам частичку моря - подушку с наполнителем из водоросли <strong>зостера</strong> Чёрного и Азовского морей. Она не гниёт, не боится влаги, гипоаллергенна и сама регулирует микроклимат: забирает лишнюю влагу, а в сухом воздухе отдаёт её.</p>
           <p>В составе - йод, бром, железо, цинк, кобальт, аминокислоты и фукоидан. Рядом с изголовьем - лёгкий морской аромат и атмосфера побережья, в которой приятно расслабиться и заснуть.</p>
@@ -612,23 +622,23 @@
       </div>
       <div class="picker ro" id="seaPicker">
         <div class="picker-stage">
-          <div class="shot"><img id="seaImg" src="assets/turtle.png" alt="Подушка Черепаха" decoding="async"></div>
+          <div class="shot"><img id="seaImg" src="assets/turtle.webp" alt="Подушка Черепаха" decoding="async"></div>
         </div>
         <div class="picker-info">
           <div class="plabel">Сюжет</div>
           <h3 id="seaName">Черепаха</h3>
           <div class="pprice">1500 ₽</div>
           <div class="thumbs" role="group" aria-label="Выбор сюжета">
-            <button class="thumb" aria-pressed="true" data-img="assets/turtle.png" data-name="Черепаха" aria-label="Черепаха" data-cursor><img src="assets/turtle.png" alt=""></button>
-            <button class="thumb" aria-pressed="false" data-img="assets/starfish.png" data-name="Морская звезда" aria-label="Морская звезда" data-cursor><img src="assets/starfish.png" alt=""></button>
-            <button class="thumb" aria-pressed="false" data-img="assets/seahorse.png" data-name="Морской конёк" aria-label="Морской конёк" data-cursor><img src="assets/seahorse.png" alt=""></button>
-            <button class="thumb" aria-pressed="false" data-img="assets/shells.png" data-name="Ракушки" aria-label="Ракушки" data-cursor><img src="assets/shells.png" alt=""></button>
+            <button class="thumb" aria-pressed="true" data-img="assets/turtle.webp" data-name="Черепаха" aria-label="Черепаха" data-cursor><img src="assets/turtle.webp" alt=""></button>
+            <button class="thumb" aria-pressed="false" data-img="assets/starfish.webp" data-name="Морская звезда" aria-label="Морская звезда" data-cursor><img src="assets/starfish.webp" alt=""></button>
+            <button class="thumb" aria-pressed="false" data-img="assets/seahorse.webp" data-name="Морской конёк" aria-label="Морской конёк" data-cursor><img src="assets/seahorse.webp" alt=""></button>
+            <button class="thumb" aria-pressed="false" data-img="assets/shells.webp" data-name="Ракушки" aria-label="Ракушки" data-cursor><img src="assets/shells.webp" alt=""></button>
           </div>
           <p class="picker-foot">Каждый сюжет - на подушке 45×45 с наполнителем из зостеры.</p>
-          <a class="btn btn-primary picker-cta" id="seaOrder" href="https://wa.me/79900459624" target="_blank" rel="noopener" data-cursor><span>Заказать этот вариант</span>
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 21l1.6-4A8 8 0 1 1 8 19.4L3 21Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+          <a class="btn btn-primary picker-cta" id="seaOrder" href="https://t.me/+79900459624" target="_blank" rel="noopener" data-cursor><span>Заказать этот вариант</span>
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 5 3 12l5 2 2 5 3-3 4 3 4-14Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
-          <p class="picker-hint">Откроется WhatsApp с готовым сообщением — просто отправьте его.</p>
+          <p class="picker-hint">Откроется чат в Telegram — напишите нам, какой вариант выбрали.</p>
         </div>
       </div>
 
@@ -638,25 +648,25 @@
       </div>
       <div class="picker ro" id="elegPicker">
         <div class="picker-stage">
-          <div class="shot"><img id="elegImg" src="assets/beige.png" alt="Подушка цвета Песочный" decoding="async"></div>
+          <div class="shot"><img id="elegImg" src="assets/beige.webp" alt="Подушка цвета Песочный" decoding="async"></div>
         </div>
         <div class="picker-info">
           <div class="plabel">Цвет</div>
           <h3 id="elegName">Песочный</h3>
           <div class="pprice">1500 ₽</div>
           <div class="swatches" role="group" aria-label="Выбор цвета подушки">
-            <button class="swatch" style="background:#ece0c8" data-img="assets/beige.png" data-name="Песочный" aria-pressed="true" aria-label="Песочный" data-cursor></button>
-            <button class="swatch" style="background:#b18a5e" data-img="assets/brown.png" data-name="Коричневый" aria-pressed="false" aria-label="Коричневый" data-cursor></button>
-            <button class="swatch" style="background:#c0552f" data-img="assets/terracotta.png" data-name="Терракот" aria-pressed="false" aria-label="Терракот" data-cursor></button>
-            <button class="swatch" style="background:#e9bb3e" data-img="assets/yellow.png" data-name="Жёлтый" aria-pressed="false" aria-label="Жёлтый" data-cursor></button>
-            <button class="swatch" style="background:#26282b" data-img="assets/black.png" data-name="Графит" aria-pressed="false" aria-label="Графит" data-cursor></button>
-            <button class="swatch" style="background:#fbfbf9" data-img="assets/white.png" data-name="Белый" aria-pressed="false" aria-label="Белый" data-cursor></button>
+            <button class="swatch" style="background:#ece0c8" data-img="assets/beige.webp" data-name="Песочный" aria-pressed="true" aria-label="Песочный" data-cursor></button>
+            <button class="swatch" style="background:#b18a5e" data-img="assets/brown.webp" data-name="Коричневый" aria-pressed="false" aria-label="Коричневый" data-cursor></button>
+            <button class="swatch" style="background:#c0552f" data-img="assets/terracotta.webp" data-name="Терракот" aria-pressed="false" aria-label="Терракот" data-cursor></button>
+            <button class="swatch" style="background:#e9bb3e" data-img="assets/yellow.webp" data-name="Жёлтый" aria-pressed="false" aria-label="Жёлтый" data-cursor></button>
+            <button class="swatch" style="background:#26282b" data-img="assets/black.webp" data-name="Графит" aria-pressed="false" aria-label="Графит" data-cursor></button>
+            <button class="swatch" style="background:#fbfbf9" data-img="assets/white.webp" data-name="Белый" aria-pressed="false" aria-label="Белый" data-cursor></button>
           </div>
           <p class="picker-foot">Спокойная однотонная классика - шесть оттенков под любой интерьер.</p>
-          <a class="btn btn-primary picker-cta" id="elegOrder" href="https://wa.me/79900459624" target="_blank" rel="noopener" data-cursor><span>Заказать этот вариант</span>
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 21l1.6-4A8 8 0 1 1 8 19.4L3 21Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+          <a class="btn btn-primary picker-cta" id="elegOrder" href="https://t.me/+79900459624" target="_blank" rel="noopener" data-cursor><span>Заказать этот вариант</span>
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 5 3 12l5 2 2 5 3-3 4 3 4-14Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
-          <p class="picker-hint">Откроется WhatsApp с готовым сообщением — просто отправьте его.</p>
+          <p class="picker-hint">Откроется чат в Telegram — напишите нам, какой вариант выбрали.</p>
         </div>
       </div>
 
@@ -666,23 +676,23 @@
       </div>
       <div class="picker ro" id="authPicker">
         <div class="picker-stage">
-          <div class="shot"><img id="authImg" src="assets/author1.png" alt="Авторская подушка Незабудки" decoding="async"></div>
+          <div class="shot"><img id="authImg" src="assets/author1.webp" alt="Авторская подушка Незабудки" decoding="async"></div>
         </div>
         <div class="picker-info">
           <div class="plabel">Узор</div>
           <h3 id="authName">Незабудки</h3>
           <div class="pprice">1500 ₽</div>
           <div class="thumbs" role="group" aria-label="Выбор узора">
-            <button class="thumb" aria-pressed="true" data-img="assets/author1.png" data-name="Незабудки" aria-label="Незабудки" data-cursor><img src="assets/author1.png" alt=""></button>
-            <button class="thumb" aria-pressed="false" data-img="assets/author2.png" data-name="Полевые цветы" aria-label="Полевые цветы" data-cursor><img src="assets/author2.png" alt=""></button>
-            <button class="thumb" aria-pressed="false" data-img="assets/author3.png" data-name="Ночной сад" aria-label="Ночной сад" data-cursor><img src="assets/author3.png" alt=""></button>
-            <button class="thumb" aria-pressed="false" data-img="assets/author4.png" data-name="Серая стёжка" aria-label="Серая стёжка" data-cursor><img src="assets/author4.png" alt=""></button>
+            <button class="thumb" aria-pressed="true" data-img="assets/author1.webp" data-name="Незабудки" aria-label="Незабудки" data-cursor><img src="assets/author1.webp" alt=""></button>
+            <button class="thumb" aria-pressed="false" data-img="assets/author2.webp" data-name="Полевые цветы" aria-label="Полевые цветы" data-cursor><img src="assets/author2.webp" alt=""></button>
+            <button class="thumb" aria-pressed="false" data-img="assets/author3.webp" data-name="Ночной сад" aria-label="Ночной сад" data-cursor><img src="assets/author3.webp" alt=""></button>
+            <button class="thumb" aria-pressed="false" data-img="assets/author4.webp" data-name="Серая стёжка" aria-label="Серая стёжка" data-cursor><img src="assets/author4.webp" alt=""></button>
           </div>
           <p class="picker-foot">Готовые узоры или ваш собственный эскиз - на подушке 45×45 с зостерой.</p>
-          <a class="btn btn-primary picker-cta" id="authOrder" href="https://wa.me/79900459624" target="_blank" rel="noopener" data-cursor><span>Заказать этот вариант</span>
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 21l1.6-4A8 8 0 1 1 8 19.4L3 21Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+          <a class="btn btn-primary picker-cta" id="authOrder" href="https://t.me/+79900459624" target="_blank" rel="noopener" data-cursor><span>Заказать этот вариант</span>
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 5 3 12l5 2 2 5 3-3 4 3 4-14Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
-          <p class="picker-hint">Откроется WhatsApp с готовым сообщением — просто отправьте его.</p>
+          <p class="picker-hint">Откроется чат в Telegram — напишите нам, какой вариант выбрали.</p>
         </div>
       </div>
     </div>
@@ -698,7 +708,7 @@
 
       <div class="mat-grid">
         <div class="mat-visual ro">
-          <div class="shot"><img src="assets/materials.jpg" alt="Разрез подушки: хлопковый чехол и наполнитель из зостеры" loading="lazy" decoding="async"></div>
+          <div class="shot"><img src="assets/materials.webp" alt="Разрез подушки: хлопковый чехол и наполнитель из зостеры" loading="lazy" decoding="async"></div>
         </div>
         <div class="ro d1">
           <div class="mat-features">
@@ -729,7 +739,7 @@
       <div class="sec-head">
         <div class="ro"><span class="sec-no">04 - Зостера</span><h2>Сила зостеры</h2></div>
       </div>
-      <div class="zphoto ro"><div class="shot"><img src="assets/zostera.jpg" alt="Заросли морской водоросли зостеры в лучах солнца под водой" loading="lazy" decoding="async"></div></div>
+      <div class="zphoto ro"><div class="shot"><img src="assets/zostera.webp" alt="Заросли морской водоросли зостеры в лучах солнца под водой" loading="lazy" decoding="async"></div></div>
       <div class="zfacts">
         <div class="zfact ro">
           <span class="ic"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 8c2 0 2-2 4-2s2 2 4 2 2-2 4-2 2 2 4 2M3 14c2 0 2-2 4-2s2 2 4 2 2-2 4-2 2 2 4 2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span>
@@ -794,20 +804,20 @@
       </div>
       <div class="team-grid">
         <div class="member ro">
-          <div class="avatar"><img src="assets/larisa.jpg" alt="Лариса" loading="lazy"></div>
+          <div class="avatar"><img src="assets/larisa.webp" alt="Лариса" loading="lazy"></div>
           <h3>Лариса</h3>
           <p class="role">Основатель · мастер-дизайнер</p>
           <p class="bio">Придумала «Море в подушке» и шьёт каждую подушку своими руками. Верит, что уют начинается с дыхания моря.</p>
         </div>
         <div class="member ro d1">
-          <!-- ЗАМЕНИТЬ аватар на фото: <div class="avatar"><img src="assets/natalia.jpg" alt="Наталья"></div> -->
+          <!-- ЗАМЕНИТЬ аватар на фото: <div class="avatar"><img src="assets/natalia.webp" alt="Наталья"></div> -->
           <div class="avatar">Н</div>
           <h3>Наталья</h3>
           <p class="role">Мастер-дизайнер</p>
           <p class="bio">Подбирает ткани, цвета и морские сюжеты - чтобы каждая подушка радовала глаз и была приятной на ощупь.</p>
         </div>
         <div class="member ro d2">
-          <!-- ЗАМЕНИТЬ аватар на фото: <div class="avatar"><img src="assets/viktor.jpg" alt="Виктор"></div> -->
+          <!-- ЗАМЕНИТЬ аватар на фото: <div class="avatar"><img src="assets/viktor.webp" alt="Виктор"></div> -->
           <div class="avatar">В</div>
           <h3>Виктор</h3>
           <p class="role">Идейный вдохновитель</p>
@@ -1063,8 +1073,7 @@
 
   /* Pickers (наволочки + линейки подушек) - каждый привязан к своему блоку */
   function orderUrl(line, name){
-    var msg = "Здравствуйте! Хочу заказать подушку 45×45: " + line + " — " + name + ", 1500 ₽.";
-    return "https://wa.me/79900459624?text=" + encodeURIComponent(msg);
+    return "https://t.me/+79900459624";
   }
   function initPicker(rootSel, imgId, nameId, btnSel, altPrefix, orderId, line){
     var root = document.querySelector(rootSel);
