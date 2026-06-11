@@ -1008,14 +1008,22 @@
   onScroll();
   if(toTop) toTop.addEventListener("click", function(){ window.scrollTo({top:0, behavior: reduce ? "auto" : "smooth"}); });
 
-  /* Скрываем плавающий нижний бар, когда видны кнопки в контактах (и ниже) - чтобы не дублировать */
-  if(mobileCta && contactCtas && "IntersectionObserver" in window){
+  /* Скрываем плавающий нижний бар, когда на экране свои кнопки заказа или контакты - чтобы не дублировать */
+  if(mobileCta && "IntersectionObserver" in window){
+    var ctaVis = new Map();
     var ctaObs = new IntersectionObserver(function(entries){
       entries.forEach(function(e){
-        mobileCta.classList.toggle("cta-hidden", e.isIntersecting || e.boundingClientRect.top < 0);
+        /* контакты - последняя секция: ниже них бар уже не нужен */
+        ctaVis.set(e.target, e.target === contactCtas
+          ? (e.isIntersecting || e.boundingClientRect.top < 0)
+          : e.isIntersecting);
       });
+      var hide = false;
+      ctaVis.forEach(function(v){ if(v) hide = true; });
+      mobileCta.classList.toggle("cta-hidden", hide);
     }, {threshold:0});
-    ctaObs.observe(contactCtas);
+    document.querySelectorAll(".picker-cta").forEach(function(el){ ctaObs.observe(el); });
+    if(contactCtas) ctaObs.observe(contactCtas);
   }
 
   /* Бегущая строка не крутится, пока лента вне экрана */
