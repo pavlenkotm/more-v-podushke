@@ -24,8 +24,7 @@
 <meta name="twitter:description" content="Подушки 45×45 из хлопка с наполнителем из морской водоросли зостеры. Ручная работа, Бердянск.">
 <meta name="twitter:image" content="https://pavlenkotm.github.io/more-v-podushke/assets/hero-main.jpg">
 <link rel="canonical" href="https://pavlenkotm.github.io/more-v-podushke/">
-<link rel="preload" as="image" type="image/webp" href="assets/hero-main.webp" media="not (max-width:900px)" fetchpriority="high">
-<link rel="preload" as="image" type="image/webp" href="assets/hero-mobile.webp" media="(max-width:900px)" fetchpriority="high">
+<link rel="preload" as="image" imagesrcset="assets/hero-mobile.webp 1500w, assets/hero-mobile@2x.webp 2560w" imagesizes="100vw" fetchpriority="high">
 <!-- При переходе на свой домен заменить og:url / og:image / twitter:image на новый адрес -->
 <meta name="author" content="pavlenkotm">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -459,17 +458,28 @@
   .mobile-cta.cta-hidden{opacity:0;visibility:hidden;transform:translateY(130%);pointer-events:none}
   .mobile-cta .btn{flex:1;justify-content:center;padding:15px 20px;box-shadow:0 12px 30px -8px rgba(12,59,70,.55)}
 
-  /* tablet: заголовок hero держится внутри обрезанного кадра, скрим плотнее */
-  @media(min-width:601px) and (max-width:1100px){
-    .shero-content{max-width:72vw}
-    .shero-scrim{background:linear-gradient(180deg,rgba(8,40,48,.38) 0%,rgba(8,40,48,.16) 30%,rgba(8,40,48,.14) 58%,rgba(8,40,48,.42) 100%)}
-  }
-  /* tablet-портрет: мобильная фотосцена - текст на небе над подушкой */
-  @media(min-width:601px) and (max-width:900px){
+  /* ПК и планшет: «открытка с берега» - тот же кадр, что на мобильном:
+     заголовок в чистом небе, подушка в нижней трети.
+     padding-top 12svh связан со стартовым зумом 1.12 в heroTick;
+     при изменении зума пересчитать (верх окна рамки = 50-36*scale, svh) */
+  @media(min-width:601px){
     .shero-sticky{align-items:flex-start}
-    .shero-content{padding-top:14vh;padding-top:14svh}
-    .shero-content h1{font-size:clamp(46px,7.5vw,68px)}
-    .shero-scrim{background:linear-gradient(180deg,rgba(8,40,48,.46) 0%,rgba(8,40,48,.2) 32%,rgba(8,40,48,.1) 55%,rgba(8,40,48,.46) 100%)}
+    .shero-media{object-position:50% 66%}
+    .shero-content{padding:clamp(84px,12vh,200px) 28px 0;padding:clamp(84px,12svh,200px) 28px 0;max-width:1100px}
+    .shero-content h1{font-size:clamp(54px,6.8vw,128px)}
+    .hero-eyebrow{font-size:clamp(13px,.85vw,16px)}
+    .shero-actions{margin-top:34px}
+    .shero-scrim{background:linear-gradient(180deg,rgba(8,40,48,.46) 0%,rgba(8,40,48,.2) 30%,rgba(8,40,48,.08) 55%,rgba(8,40,48,.42) 100%)}
+    .shero-actions .btn-ghost-light{border:1.5px solid rgba(255,255,255,.8);background:rgba(8,40,48,.22);-webkit-backdrop-filter:blur(5px);backdrop-filter:blur(5px)}
+    .shero-actions .btn-ghost-light:hover{border-color:#fff;background:rgba(8,40,48,.34)}
+  }
+  @media(min-width:601px) and (max-width:1100px){
+    .shero-content{max-width:80vw}
+    .shero-content h1{font-size:clamp(46px,7.5vw,84px)}
+  }
+  /* страховка ультрашироких: двухстрочный h1 не ложится на воду */
+  @media(min-width:601px) and (min-aspect-ratio:2/1){
+    .shero-content h1{font-size:clamp(48px,5.5vw,112px)}
   }
 
   /* mobile: designed, not shrunk */
@@ -592,10 +602,8 @@
   <section class="shero" id="hero">
     <div class="shero-sticky">
       <picture>
-        <source media="(max-width:900px)" type="image/webp" srcset="assets/hero-mobile.webp">
-        <source media="(max-width:900px)" srcset="assets/hero-mobile.jpg">
-        <source type="image/webp" srcset="assets/hero-main.webp">
-        <img class="shero-media" id="sheroMedia" src="assets/hero-main.jpg" alt="Декоративная подушка с принтом морской черепахи" fetchpriority="high">
+        <source type="image/webp" srcset="assets/hero-mobile.webp 1500w, assets/hero-mobile@2x.webp 2560w" sizes="100vw">
+        <img class="shero-media" id="sheroMedia" src="assets/hero-mobile.jpg" alt="Декоративная подушка с принтом морской черепахи на песчаном пляже" fetchpriority="high">
       </picture>
       <div class="shero-scrim"></div>
       <div class="shero-content" id="sheroContent">
